@@ -1,0 +1,55 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#0f172a" rx="10" ry="10"/>
+    
+    <!-- Title -->
+    <text x="50%" y="40" text-anchor="middle" fill="white" font-family="sans-serif" font-size="20" font-weight="bold">Error Rate vs. K Value</text>
+    
+    <!-- Legend -->
+    <circle cx="400" cy="70" r="4" fill="#ef4444"/>
+    <text x="415" y="75" fill="#ef4444" font-family="sans-serif" font-size="12">Training Error</text>
+    <circle cx="400" cy="90" r="4" fill="#0ea5e9"/>
+    <text x="415" y="95" fill="#0ea5e9" font-family="sans-serif" font-size="12">Validation Error</text>
+
+    <!-- Axes -->
+    <line x1="60" y1="340" x2="540" y2="340" stroke="white" stroke-width="2"/>
+    <line x1="60" y1="340" x2="60" y2="80" stroke="white" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="300" y="380" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">K Value</text>
+    <text x="25" y="210" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14" transform="rotate(-90 25,210)">Error Rate</text>
+    
+    <!-- Training Error Line (Red) - Starts low, goes up -->
+    <polyline points="
+        60,320 
+        100,300 
+        140,280 
+        180,270 
+        220,265 
+        260,260 
+        300,258 
+        340,256 
+        380,255 
+        420,254 
+        460,253 
+        500,252 
+        540,251" 
+        fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Validation Error Line (Blue) - Starts high, goes down (elbow), then up -->
+    <polyline points="
+        60,100 
+        100,180 
+        140,240 
+        180,280 
+        220,300 
+        260,310 
+        300,305 
+        340,290 
+        380,270 
+        420,250 
+        460,230 
+        500,210 
+        540,190" 
+        fill="none" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        
+</svg>

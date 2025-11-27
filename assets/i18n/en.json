@@ -1,0 +1,122 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "education": "Education",
+        "experience": "Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Hello, I am",
+        "name": "Ammar Souchon",
+        "role": "AI & Data Engineer",
+        "tagline": "Transforming healthcare through Artificial Intelligence.",
+        "cta_cv": "Download CV",
+        "cta_contact": "Contact Me"
+    },
+    "about": {
+        "title": "Who am I?",
+        "description": "Engineering student at EPISEN specializing in Health Technologies and Big Data. I combine technical expertise in Python and Deep Learning with a passion for medical innovation. My goal is to design robust and ethical AI solutions to solve complex challenges.",
+        "values": {
+            "title": "My Values",
+            "v1": "Innovation",
+            "v2": "Rigor",
+            "v3": "Social Impact"
+        }
+    },
+    "education": {
+        "title": "Education",
+        "items": [
+            {
+                "degree": "Engineering Degree - Health Technologies",
+                "school": "EPISEN (UPEC)",
+                "date": "2022 - 2025",
+                "desc": "Specialization in AI & Big Data. Signal Processing, Machine Learning, Bioinformatics."
+            },
+            {
+                "degree": "BUT Electrical Engineering & Industrial Computing",
+                "school": "IUT of Créteil-Vitry",
+                "date": "2020 - 2022",
+                "desc": "Valedictorian. Embedded Programming, Automation, Electronics."
+            }
+        ]
+    },
+    "experience": {
+        "title": "Professional Experience",
+        "items": [
+            {
+                "role": "Python Developer & Automation",
+                "company": "DDFIP (Ministry of Economy)",
+                "date": "2023 - Present",
+                "desc": "Designing test automation scripts. Optimizing software validation processes. Stack: Python, Selenium, Jenkins."
+            },
+            {
+                "role": "IT Asset Manager & Tool Dev",
+                "company": "Ministry of Economy",
+                "date": "2022 - 2023",
+                "desc": "Development of internal tools for IT asset management. Deployment automation."
+            },
+            {
+                "role": "Research Intern - Computer Vision",
+                "company": "LISSI Lab / ADP Consortium",
+                "date": "2022 (Internship)",
+                "desc": "Participation in a European project. Development of object detection algorithms for airport security. Stack: Python, OpenCV, PyTorch."
+            }
+        ]
+    },
+    "projects": {
+        "title": "Projects",
+        "items": [
+            {
+                "title": "BuildAI",
+                "desc": "Experimental AI-assisted code generation SaaS platform.",
+                "tags": [
+                    "React",
+                    "Node.js",
+                    "OpenAI API"
+                ]
+            },
+            {
+                "title": "LLM Fine-Tuning",
+                "desc": "Adapting a Llama 2 model for medical report analysis.",
+                "tags": [
+                    "Python",
+                    "Hugging Face",
+                    "PyTorch"
+                ]
+            },
+            {
+                "title": "Computer Vision Pipeline",
+                "desc": "Anomaly detection system on radiological images.",
+                "tags": [
+                    "Python",
+                    "OpenCV",
+                    "TensorFlow"
+                ]
+            },
+            {
+                "title": "Flutter Inventory App",
+                "desc": "Cross-platform mobile application for real-time stock management.",
+                "tags": [
+                    "Flutter",
+                    "Dart",
+                    "Firebase"
+                ]
+            },
+            {
+                "title": "Scraping Tools",
+                "desc": "Suite of scripts for massive web data collection and analysis.",
+                "tags": [
+                    "Python",
+                    "BeautifulSoup",
+                    "Selenium"
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "rights": "All rights reserved.",
+        "made_with": "Designed with passion and code."
+    }
+}
