@@ -143,6 +143,11 @@ for item in k_smallest:
 print("Class of Pnew :", max(iris_class, key=iris_class.get))</code></pre>
                         </div>
 
+                        <h3 class="text-2xl font-bold mb-4 text-white">Comment Choisir la Meilleure Valeur de k</h3>
+                        <p class="mb-4">Choisir la bonne valeur pour k est très important. Si k est trop petit, le modèle peut être trop sensible au bruit (surapprentissage). Si k est trop grand, il peut lisser des motifs importants (sous-apprentissage).</p>
+                        <p class="mb-4">La meilleure façon de choisir k est de tester différentes valeurs et d'observer l'erreur sur le jeu de test. Comme le montre le graphique ci-dessous, le k optimal est là où l'erreur de test est la plus faible (méthode du coude) :</p>
+                        <img src="assets/img/knn/best_k.svg" alt="Graphique Meilleur K" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
                         <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
                         <p class="mb-4">K-NN est un excellent point de départ en Machine Learning car il est facile à comprendre et ne nécessite pas de mathématiques complexes ou d'entraînement lourd.</p>
                         
@@ -272,11 +277,99 @@ for j in range(epochs):
                 },
                 {
                     id: "mnist",
-                    title: "Neural Network from Scratch (MNIST)",
+                    title: "Neural Network from scratch (MNIST)",
                     desc: "Réseau de neurones complet pour la reconnaissance de chiffres manuscrits.",
-                    fullDesc: "L'un de mes projets les plus ambitieux : construire un réseau de neurones profond (Deep Neural Network) sans aucun framework de Deep Learning (pas de TensorFlow/PyTorch). <br><br> <strong>Architecture :</strong> <br> - <strong>Classes Modulaires :</strong> Création de classes Python pour `Layer`, `Neuron`, et `Network`. <br> - <strong>Forward Propagation :</strong> Calcul matriciel des activations couche par couche. <br> - <strong>Backpropagation :</strong> Implémentation manuelle de la règle de la chaîne (Chain Rule) pour calculer les gradients et mettre à jour les poids. <br> - <strong>Activation ReLU :</strong> Utilisation de Rectified Linear Unit pour introduire la non-linéarité. <br><br> Entraîné sur le dataset MNIST, ce modèle atteint une précision impressionnante, validant ma compréhension des fondements du Deep Learning.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">Le système de reconnaissance de chiffres manuscrits existe déjà, mais j'ai travaillé pour améliorer mes compétences en réseaux de neurones et je souhaite partager mon expérience sur le sujet. Les réseaux de neurones sont très importants aujourd'hui, car nous les rencontrons dans de nombreuses situations, de la reconnaissance de plantes à l'imagerie médicale. Mon objectif dans cet article est de développer un réseau de neurones à partir de zéro, et pour ce faire, j'ai choisi l'un des problèmes de classification les plus basiques : "Reconnaissance de chiffres manuscrits".</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Réflexion</h3>
+                        <p class="mb-4">La première étape avant de coder est de réfléchir et d'apprendre sur les réseaux de neurones. Le réseau de neurones est très simple et peut être simplifié comme suit :</p>
+                        <img src="assets/img/mnist/architecture.svg" alt="Architecture Réseau de Neurones" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        
+                        <p class="mb-4">Nous pouvons voir 3 couches différentes :</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Couche d'Entrée :</strong> C'est la première couche pour récupérer les informations d'entrée.</li>
+                            <li><strong>Couches Cachées :</strong> C'est la partie la plus importante du réseau de neurones, le traitement invisible.</li>
+                            <li><strong>Couche de Sortie :</strong> La couche de sortie est le résultat de notre réseau.</li>
+                        </ul>
+
+                        <p class="mb-4">Pour la question des nombres manuscrits, nous allons définir le nombre d'entrées et de sorties. J'utilise le dataset MNIST (images 28x28). Nous avons 10 possibilités pour les couches de sortie (0 à 9).</p>
+                        <p class="mb-4 text-sm text-slate-400">Nombre de neurones dans la première couche (entrée) : 28 x 28 = 784 pixels<br>Nombre de neurones dans la dernière couche (sortie) : 10 (nombre de classes)</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Codage</h3>
+                        <p class="mb-4">Maintenant, il est temps de créer le réseau de neurones à partir de zéro. Nous avons 4 étapes pour faire cela :</p>
+                        <ol class="list-decimal list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Créer une classe Neuron</li>
+                            <li>Créer une classe Layer</li>
+                            <li>Créer une classe Network</li>
+                            <li>Créer un code pour entraîner le réseau de neurones et tester la précision</li>
+                        </ol>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Classe Neuron</h4>
+                        <p class="mb-4">Le neurone est basé sur ce que nous savons de l'activité électrique du cerveau humain. Le neurone est très simple à coder, nous avons 4 méthodes importantes : <code>__init__</code>, <code>activation_function</code>, <code>forward</code>, <code>backward</code>.</p>
+                        
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def __init__(self, input_size):
+    self.weights = np.random.randn(input_size) * np.sqrt(2. / input_size)
+    self.bias = 0.0
+    self.last_inputs = None
+    self.last_z = None</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Fonction d'Activation (ReLU)</h4>
+                        <p class="mb-4">Nous utilisons la fonction d'activation la plus simple et la plus populaire (ReLU).</p>
+                        <img src="assets/img/mnist/relu.svg" alt="Fonction ReLU" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def activation_function(self, x):
+    return np.maximum(0, x)</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Forward (Propagation)</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def forward(self, inputs):
+    self.last_inputs = np.array(inputs)
+    self.last_z = np.dot(self.weights, self.last_inputs) + self.bias
+    return self.activation_function(self.last_z)</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Backward (Rétropropagation)</h4>
+                        <p class="mb-4">Dernière méthode et la plus importante. Nous calculons d'abord la dérivée de la fonction d'activation.</p>
+                        <img src="assets/img/mnist/relu_derivative.svg" alt="Dérivée ReLU" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def backward(self, dL_dout, learning_rate):
+    dL_dz = dL_dout * (1 if self.last_z > 0 else 0)
+    dL_dw = dL_dz * self.last_inputs
+    dL_db = dL_dz
+    self.weights -= learning_rate * dL_dw
+    self.bias -= learning_rate * dL_db
+    dL_dx = self.weights * dL_dz
+    return dL_dx</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Entraînement du Modèle</h3>
+                        <p class="mb-4">Le processus d'entraînement implique plusieurs étapes clés : Forward Pass, Calcul de la Perte (Cross-Entropy), Backward Pass, et Mise à jour des Paramètres.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Training Loop (Simplified)
+for epoch in range(epochs):
+    for i in range(len(train_images)):
+        outputs = network.forward(train_images[i])
+        loss = cross_entropy_loss(train_labels[i], outputs)
+        dL_dout = outputs - train_labels[i]
+        network.backward(dL_dout, learning_rate)</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
+                        <p class="mb-4">Nous pouvons conclure que le réseau de neurones est un domaine fascinant. Le cas des chiffres manuscrits est le plus simple pour commencer. Dans ce cas, nous pouvons observer de bonnes performances grâce à 350 neurones cachés, un taux d'apprentissage de 0.001 et 3 époques.</p>
+                        
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                Voir le Code Complet sur GitHub
+                            </a>
+                        </div>
+                    `,
                     tags: ["Deep Learning", "Python", "Neural Networks"],
-                    img: "project-vision.png"
+                    img: "mnist/cover.png"
                 },
                 {
                     id: "flask",
@@ -451,6 +544,11 @@ for item in k_smallest:
 print("Class of Pnew :", max(iris_class, key=iris_class.get))</code></pre>
                         </div>
 
+                        <h3 class="text-2xl font-bold mb-4 text-white">How to Choose the Best k Value</h3>
+                        <p class="mb-4">Choosing the right value for k is very important. If k is too small, the model can be too sensitive to noise (overfitting). If k is too large, it may smooth out important patterns (underfitting).</p>
+                        <p class="mb-4">The best way to choose k is to test different values and observe the error on the test set. As shown in the graph below, the optimal k is where the test error is the lowest:</p>
+                        <img src="assets/img/knn/best_k.svg" alt="Best K Graph" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
                         <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
                         <p class="mb-4">K-NN is a great starting point in machine learning because it’s easy to understand and doesn’t require complex math or training. But it’s also powerful when used properly.</p>
                         
@@ -575,21 +673,6 @@ for j in range(epochs):
                             </a>
                         </div>
                     `,
-                    tags: ["Python", "Maths", "Optimization"],
-                    img: "project-logistic.png"
-                },
-                {
-                    id: "mnist",
-                    title: "Neural Network from Scratch (MNIST)",
-                    desc: "Full neural network for handwritten digit recognition.",
-                    fullDesc: "One of my most ambitious projects: building a Deep Neural Network without any Deep Learning framework (no TensorFlow/PyTorch). <br><br> <strong>Architecture:</strong> <br> - <strong>Modular Classes:</strong> Creating Python classes for `Layer`, `Neuron`, and `Network`. <br> - <strong>Forward Propagation:</strong> Matrix calculation of activations layer by layer. <br> - <strong>Backpropagation:</strong> Manual implementation of the Chain Rule to calculate gradients and update weights. <br> - <strong>ReLU Activation:</strong> Using Rectified Linear Unit to introduce non-linearity. <br><br> Trained on the MNIST dataset, this model achieves impressive accuracy, validating my understanding of Deep Learning foundations.",
-                    tags: ["Deep Learning", "Python", "Neural Networks"],
-                    img: "project-vision.png"
-                },
-                {
-                    id: "flask",
-                    title: "API with Python Flask",
-                    desc: "Guide to creating a robust RESTful API with Flask.",
                     fullDesc: "This project is a practical guide to Backend development with Python and Flask. It's not just about creating routes, but building a robust and scalable RESTful API. <br><br> <strong>Concepts Covered:</strong> <br> - <strong>Advanced Routing:</strong> Handling HTTP methods (GET, POST, PUT, DELETE) and URL parameters. <br> - <strong>MVC Structure:</strong> Organizing code to separate business logic, data models, and controllers. <br> - <strong>JSON & Serialization:</strong> Efficient communication between client and server. <br> - <strong>Best Practices:</strong> Error handling, HTTP status codes, and input data validation.",
                     tags: ["Web Dev", "Python", "Flask", "API"],
                     img: "project-buildai.png"
