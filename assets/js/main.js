@@ -81,14 +81,7 @@ const translationsData = {
                         <h3 class="text-2xl font-bold mb-4 text-white">Résumé</h3>
                         <p class="mb-4">Notre projet vise à faciliter le travail des professionnels enseignant les métiers du bâtiment en leur fournissant une plateforme qui centralise les informations, permet des recherches et offre une communication avec une IA spécialisée. Pour y parvenir, nous avons utilisé des technologies de web scraping, de nouveaux types de bases de données et l’intelligence artificielle.</p>
                         
-                        <div class="flex gap-4 mb-8">
-                            <a href="assets/img/buildai/Poster_technique_BuildAI.pdf" download="Poster_technique_BuildAI.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                Télécharger le Poster Technique (PDF)
-                            </a>
-                        </div>
+
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Vue d’ensemble : Pourquoi BuildAI est une révolution ?</h3>
                         <p class="mb-4">BuildAI est une plateforme innovante qui révolutionne l’accès aux connaissances liées au bâtiment en s’appuyant sur la récupération et la structuration de données pilotées par l’IA.</p>
@@ -694,14 +687,7 @@ def get_stations():
                         <h3 class="text-2xl font-bold mb-4 text-white">Summary</h3>
                         <p class="mb-4">Our project aims to facilitate the work of professionals teaching construction trades by providing a platform that centralizes information, enables searches, and offers communication with a specialized AI. To achieve this, we used web scraping technologies, new types of databases, and artificial intelligence.</p>
                         
-                        <div class="flex gap-4 mb-8">
-                            <a href="assets/img/buildai/Poster_technique_BuildAI.pdf" download="Poster_technique_BuildAI.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                Download Technical Poster (PDF)
-                            </a>
-                        </div>
+
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Overview: Why BuildAI is a Revolution?</h3>
                         <p class="mb-4">BuildAI is an innovative platform that revolutionizes access to construction-related knowledge by leveraging AI-driven data retrieval and structuring.</p>
