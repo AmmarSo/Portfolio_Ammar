@@ -76,9 +76,125 @@ const translationsData = {
                 {
                     id: "buildai",
                     title: "BuildAI",
-                    desc: "Plateforme pour enseignants du bâtiment. Scraping de ressources, DB multimodale (vectoriel, graphe), Fine-tuning LLM (Mistral 8B), App Flutter.",
-                    fullDesc: "BuildAI est une plateforme complète conçue pour aider les enseignants dans le domaine du bâtiment à créer des cours interactifs. Le projet intègre plusieurs technologies avancées : scraping de données massives avec Python, une base de données multimodale combinant vectoriel et graphe pour une recherche sémantique précise, et le fine-tuning d'un modèle Mistral 8B pour générer du contenu pédagogique pertinent. Une application mobile Flutter accompagne la plateforme.",
-                    tags: ["LLM", "Python", "Flutter", "GraphDB"],
+                    desc: "Plateforme pour enseignants du bâtiment. Scraping, DB multimodale, LLM (Mistral 8B), App Flutter.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Résumé</h3>
+                        <p class="mb-4">Notre projet vise à faciliter le travail des professionnels enseignant les métiers du bâtiment en leur fournissant une plateforme qui centralise les informations, permet des recherches et offre une communication avec une IA spécialisée. Pour y parvenir, nous avons utilisé des technologies de web scraping, de nouveaux types de bases de données et l’intelligence artificielle.</p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <a href="assets/img/buildai/Poster_technique_BuildAI.pdf" download="Poster_technique_BuildAI.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Télécharger le Poster Technique (PDF)
+                            </a>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Vue d’ensemble : Pourquoi BuildAI est une révolution ?</h3>
+                        <p class="mb-4">BuildAI est une plateforme innovante qui révolutionne l’accès aux connaissances liées au bâtiment en s’appuyant sur la récupération et la structuration de données pilotées par l’IA.</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Connaissance centralisée :</strong> Agrège diverses ressources liées à la construction en un seul hub accessible.</li>
+                            <li><strong>Recherche assistée par IA :</strong> Utilise la recherche sémantique et les LLMs pour retrouver les informations les plus pertinentes.</li>
+                            <li><strong>Système hybride de bases de données :</strong> Gère efficacement les données avec des bases vectorielles, graphe et documentaires.</li>
+                            <li><strong>Extraction de données en temps réel :</strong> Scrape et met à jour en continu le contenu lié à l’industrie.</li>
+                            <li><strong>Adapté aux formateurs :</strong> Conçu pour que les enseignants puissent facilement créer et personnaliser du matériel pédagogique.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Impacts clés de BuildAI</h3>
+                        <p class="mb-4">BuildAI transforme la manière dont les professionnels du secteur du bâtiment accèdent et utilisent la connaissance. En combinant recherche pilotée par IA, bases de données structurées et mises à jour en temps réel, il offre des avantages significatifs :</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Accès plus rapide à l’information :</strong> Élimine les recherches manuelles grâce à une structuration intelligente du savoir.</li>
+                            <li><strong>Expérience d’apprentissage intelligente :</strong> Recommandations IA pour contenus pédagogiques adaptés.</li>
+                            <li><strong>Accessibilité totale :</strong> Plateforme web + application mobile.</li>
+                            <li><strong>Base de connaissances interconnectée :</strong> Bases vectorielles, graphe et documentaires.</li>
+                            <li><strong>Évolutif et orienté “future proof” :</strong> Extensible à d’autres domaines nécessitant une gestion avancée du savoir.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Comment fonctionne le Web Scraping</h3>
+                        <p class="mb-4">Le Web scraping permet d’extraire automatiquement des informations structurées depuis des sites web. BuildAI l’utilise pour collecter et organiser des données du secteur de la construction.</p>
+                        <p class="mb-2 font-bold text-primary">Étapes principales :</p>
+                        <ol class="list-decimal list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Identification des sites cibles : documents réglementaires, supports pédagogiques, blogs techniques…</li>
+                            <li>Envoi de requêtes HTTP : via Selenium, BeautifulSoup, etc.</li>
+                            <li>Analyse du HTML : extraction des textes, tableaux, images, métadonnées.</li>
+                            <li>Nettoyage et normalisation des données.</li>
+                            <li>Stockage en bases de données : vectorielles, graphe, documentaires.</li>
+                            <li>Mises à jour continues pour garantir un savoir toujours actuel.</li>
+                        </ol>
+                        <p class="mb-4">Le Web scraping permet de collecter des données à grande échelle, prêtes à être utilisées par les professionnels.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Architecture des bases de données : Neo4j, MongoDB, Qdrant</h3>
+                        <p class="mb-4">BuildAI repose sur une architecture hybride composée de trois bases spécialisées :</p>
+                        <img src="assets/img/buildai/architecture.svg" alt="Architecture BuildAI" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div class="p-4 rounded-lg bg-slate-900 border border-white/5">
+                                <h4 class="text-lg font-bold text-primary mb-2">Neo4j – Base graphe</h4>
+                                <ul class="text-sm text-slate-400 space-y-1">
+                                    <li>Stocke les relations entre entités (matériaux, techniques, normes).</li>
+                                    <li>Idéal pour les systèmes de recommandations et knowledge graphs.</li>
+                                    <li>Fournit des recherches rapides de chemins/concepts liés.</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 rounded-lg bg-slate-900 border border-white/5">
+                                <h4 class="text-lg font-bold text-primary mb-2">MongoDB – Base documentaire</h4>
+                                <ul class="text-sm text-slate-400 space-y-1">
+                                    <li>Stocke des données non ou semi-structurées (documents, rapports).</li>
+                                    <li>Structure flexible (documents type JSON).</li>
+                                    <li>Adaptée à l’organisation de contenus variés.</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 rounded-lg bg-slate-900 border border-white/5">
+                                <h4 class="text-lg font-bold text-primary mb-2">Qdrant – Base vectorielle</h4>
+                                <ul class="text-sm text-slate-400 space-y-1">
+                                    <li>Optimisée pour la recherche sémantique haute dimension.</li>
+                                    <li>Utilise des embeddings générés par IA.</li>
+                                    <li>Récupère les informations selon leur sens et leur contexte.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mb-4">La combinaison de ces trois systèmes assure : performance, évolutivité, compréhension contextuelle du savoir.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">BuildAI : Plateforme web, application mobile, LLM et moteur de recherche</h3>
+                        <img src="assets/img/buildai/workflow.svg" alt="Workflow Utilisateur" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Application mobile (Flutter)</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li>Interface intuitive et responsive.</li>
+                                    <li>Intégration avec le moteur de recherche IA.</li>
+                                    <li>Accès hors-ligne aux ressources.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Plateforme web (PHP)</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li>Gestion complète des contenus.</li>
+                                    <li>Ajout/structuration de supports pédagogiques.</li>
+                                    <li>Connexion avec Neo4j, MongoDB et Qdrant.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Large Language Model (LLM)</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li>Traite les requêtes en langage naturel.</li>
+                                    <li>Génère des résumés rapides des documents.</li>
+                                    <li>Fournit une aide contextuelle intelligente.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Moteur de recherche piloté par IA</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li><strong>Recherche vectorielle (Qdrant) :</strong> pertinence par sens et non par mots-clés.</li>
+                                    <li><strong>Recherche graphe (Neo4j) :</strong> exploration des concepts liés.</li>
+                                    <li><strong>Indexation documentaire (MongoDB) :</strong> navigation structurée dans les données.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mb-4">Cette combinaison donne une plateforme intégrée, évolutive et simple d’utilisation.</p>
+                    `,
+                    tags: ["LLM", "RAG", "Python", "Flutter"],
                     img: "project-buildai.png"
                 },
                 {
@@ -373,11 +489,107 @@ for epoch in range(epochs):
                 },
                 {
                     id: "flask",
-                    title: "API with Python Flask",
-                    desc: "Guide de création d'une API RESTful robuste avec Flask.",
-                    fullDesc: "Ce projet est un guide pratique sur le développement Backend avec Python et Flask. Il ne s'agit pas seulement de créer des routes, mais de construire une API RESTful robuste et scalable. <br><br> <strong>Concepts abordés :</strong> <br> - <strong>Routing Avancé :</strong> Gestion des méthodes HTTP (GET, POST, PUT, DELETE) et des paramètres d'URL. <br> - <strong>Structure MVC :</strong> Organisation du code pour séparer la logique métier, les modèles de données et les contrôleurs. <br> - <strong>JSON & Sérialisation :</strong> Communication efficace entre le client et le serveur. <br> - <strong>Bonnes Pratiques :</strong> Gestion des erreurs, codes de statut HTTP et validation des données d'entrée.",
+                    title: "API avec Python Flask",
+                    desc: "Création d'une API RESTful complète pour les données de pollution (LCSQA).",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">Dans le cadre d'un projet universitaire, nous avons travaillé sur le développement d'une API (Application Programming Interface). L'objectif était de créer une API pour les données environnementales fournies par le LCSQA (Laboratoire Central de Surveillance de la Qualité de l’Air).</p>
+                        <p class="mb-4">Une API est un système qui permet d'accéder à des données externes via des requêtes HTTP ou HTTPS. Ce système est particulièrement utile pour mettre en œuvre une architecture microservices.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Comment ça marche ?</h3>
+                        <p class="mb-4">Le fonctionnement est simple : vous effectuez une requête HTTP vers le serveur et, en retour, vous accédez à des données structurées au format JSON.</p>
+                        <img src="assets/img/api/api_diagram.svg" alt="Diagramme API" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Avantages et Inconvénients des API</h3>
+                        <h4 class="text-xl font-bold mb-2 text-primary">Avantages :</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li><strong>Facilité d'intégration :</strong> Les API permettent une intégration transparente entre différents systèmes.</li>
+                            <li><strong>Efficacité :</strong> Accéder aux fonctionnalités sans tout reconstruire à partir de zéro.</li>
+                            <li><strong>Évolutivité :</strong> Facilite l'ajout de services supplémentaires.</li>
+                            <li><strong>Automatisation :</strong> Facilite l'automatisation sans intervention humaine.</li>
+                            <li><strong>Expérience Utilisateur :</strong> Enrichit les fonctionnalités avec des services tiers.</li>
+                        </ul>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Inconvénients :</h4>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Risques de sécurité :</strong> Vulnérabilités si non sécurisées correctement.</li>
+                            <li><strong>Dépendance :</strong> Dépendance à la disponibilité des services externes.</li>
+                            <li><strong>Complexité :</strong> Peut ajouter de la complexité à l'architecture du système.</li>
+                            <li><strong>Limites de débit :</strong> Restrictions sur le nombre de requêtes.</li>
+                            <li><strong>Maintenance :</strong> Mises à jour continues requises.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Étapes de Création</h3>
+                        <img src="assets/img/api/api_workflow.svg" alt="Workflow API" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <ol class="list-decimal list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Définir l'objectif</li>
+                            <li>Architecture de la Base de Données</li>
+                            <li>Définir les sources de données</li>
+                            <li>Importer les données</li>
+                            <li>Créer le code Python avec Flask</li>
+                            <li>Déploiement & Visualisation</li>
+                        </ol>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Architecture de la Base de Données</h4>
+                        <p class="mb-4">Nous avons identifié 5 tables importantes : Polluants, Organismes, ZAS (Zone Administrative de Surveillance), Stations et Mesures.</p>
+                        <img src="assets/img/api/architecture_bd.webp" alt="Schéma Base de Données" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">2. Importation des Données</h4>
+                        <p class="mb-4">J'ai utilisé 3 scripts : <code>Recuperation.py</code> (téléchargement CSV), <code>Create_base.py</code> (création SQLite) et <code>Insert_data.py</code> (insertion des données).</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Exemple : Insert_data.py (Extrait)
+def insert_data_from_csv(year, db_name="pollution_data.db"):
+    conn = sqlite3.connect(db_name)
+    cursor = conn.cursor()
+    # ... (lecture CSV et insertion) ...
+    cursor.execute('''INSERT INTO Mesures (...) VALUES (...)''', (...))
+    conn.commit()</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Création de l'API avec Flask</h4>
+                        <p class="mb-4">L'objectif est de créer des routes contenant des données JSON. Voici quelques endpoints : <code>/organismes</code>, <code>/stations</code>, <code>/mesures</code>.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">@app.route('/stations', methods=['GET'])
+def get_stations():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Stations')
+    stations = cursor.fetchall()
+    conn.close()
+    return jsonify([dict(row) for row in stations])</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Visualisation des Données</h3>
+                        <p class="mb-4">J'ai créé un tableau de bord utilisant PowerBI pour visualiser les données exposées par l'API.</p>
+                        <img src="assets/img/api/dashboard.webp" alt="Dashboard PowerBI" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
+                        <p class="mb-4">La création d'une API permet d'externaliser les données et de séparer l'application en services distincts. C'est une compétence essentielle pour le développement moderne.</p>
+                        
+                        <h3 class="text-2xl font-bold mb-4 text-white">Bibliographie</h3>
+                        <p class="mb-4"><strong>Articles et Tutoriels :</strong></p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li>“Creating a RESTful API with Python and Flask” par Miguel Grinberg.</li>
+                            <li>“Flask-RESTful Quickstart” sur flask-restful.readthedocs.io.</li>
+                        </ul>
+                        <p class="mb-4"><strong>Documentation :</strong></p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li>Documentation Flask : <a href="https://flask.palletsprojects.com/en/2.0.x/" class="text-primary hover:underline">flask.palletsprojects.com</a></li>
+                            <li>Documentation SQLite : <a href="https://www.sqlite.org/docs.html" class="text-primary hover:underline">sqlite.org</a></li>
+                        </ul>
+                        <p class="mb-4"><strong>Vidéo :</strong></p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li>“REST APIs with Flask and Python in 2022” par Tech With Tim sur YouTube.</li>
+                        </ul>
+
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://medium.com/@ammar.souchon/how-to-create-an-api-with-python-flask-5fbee3ebad5e" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                Lire l'article complet sur Medium
+                            </a>
+                        </div>
+                    `,
                     tags: ["Web Dev", "Python", "Flask", "API"],
-                    img: "project-buildai.png"
+                    img: "project-api.png"
                 }
             ]
         },
@@ -477,9 +689,125 @@ for epoch in range(epochs):
                 {
                     id: "buildai",
                     title: "BuildAI",
-                    desc: "Platform for construction teachers. Resource scraping, Multimodal DB, LLM Fine-tuning (Mistral 8B), Flutter App.",
-                    fullDesc: "BuildAI is a comprehensive platform designed to assist teachers in the construction field in creating interactive courses. The project integrates several advanced technologies: massive data scraping with Python, a multimodal database combining vector and graph for precise semantic search, and the fine-tuning of a Mistral 8B model to generate relevant educational content. A Flutter mobile application accompanies the platform.",
-                    tags: ["LLM", "Python", "Flutter", "GraphDB"],
+                    desc: "Platform for construction teachers. Scraping, Multimodal DB, LLM (Mistral 8B), Flutter App.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Summary</h3>
+                        <p class="mb-4">Our project aims to facilitate the work of professionals teaching construction trades by providing a platform that centralizes information, enables searches, and offers communication with a specialized AI. To achieve this, we used web scraping technologies, new types of databases, and artificial intelligence.</p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <a href="assets/img/buildai/Poster_technique_BuildAI.pdf" download="Poster_technique_BuildAI.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Download Technical Poster (PDF)
+                            </a>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Overview: Why BuildAI is a Revolution?</h3>
+                        <p class="mb-4">BuildAI is an innovative platform that revolutionizes access to construction-related knowledge by leveraging AI-driven data retrieval and structuring.</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Centralized Knowledge:</strong> Aggregates various construction-related resources into a single accessible hub.</li>
+                            <li><strong>AI-Assisted Search:</strong> Uses semantic search and LLMs to retrieve the most relevant information.</li>
+                            <li><strong>Hybrid Database System:</strong> Efficiently manages data with vector, graph, and document databases.</li>
+                            <li><strong>Real-Time Data Extraction:</strong> Continuously scrapes and updates industry-related content.</li>
+                            <li><strong>Tailored for Trainers:</strong> Designed for teachers to easily create and customize educational material.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Key Impacts of BuildAI</h3>
+                        <p class="mb-4">BuildAI transforms how construction professionals access and use knowledge. By combining AI-driven search, structured databases, and real-time updates, it offers significant advantages:</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Faster Access to Information:</strong> Eliminates manual searches through intelligent knowledge structuring.</li>
+                            <li><strong>Smart Learning Experience:</strong> AI recommendations for adapted educational content.</li>
+                            <li><strong>Total Accessibility:</strong> Web platform + mobile application.</li>
+                            <li><strong>Interconnected Knowledge Base:</strong> Vector, graph, and document databases.</li>
+                            <li><strong>Scalable and Future-Proof:</strong> Extensible to other domains requiring advanced knowledge management.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">How Web Scraping Works</h3>
+                        <p class="mb-4">Web scraping allows for the automatic extraction of structured information from websites. BuildAI uses it to collect and organize construction sector data.</p>
+                        <p class="mb-2 font-bold text-primary">Main Steps:</p>
+                        <ol class="list-decimal list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Identification of target sites: regulatory documents, educational materials, technical blogs...</li>
+                            <li>Sending HTTP requests: via Selenium, BeautifulSoup, etc.</li>
+                            <li>HTML Parsing: extraction of text, tables, images, metadata.</li>
+                            <li>Data cleaning and normalization.</li>
+                            <li>Storage in databases: vector, graph, document.</li>
+                            <li>Continuous updates to ensure always current knowledge.</li>
+                        </ol>
+                        <p class="mb-4">Web scraping allows for large-scale data collection, ready for use by professionals.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Database Architecture: Neo4j, MongoDB, Qdrant</h3>
+                        <p class="mb-4">BuildAI relies on a hybrid architecture composed of three specialized databases:</p>
+                        <img src="assets/img/buildai/architecture.svg" alt="BuildAI Architecture" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div class="p-4 rounded-lg bg-slate-900 border border-white/5">
+                                <h4 class="text-lg font-bold text-primary mb-2">Neo4j – Graph DB</h4>
+                                <ul class="text-sm text-slate-400 space-y-1">
+                                    <li>Stores relations between entities (materials, techniques, standards).</li>
+                                    <li>Ideal for recommendation systems and knowledge graphs.</li>
+                                    <li>Provides fast searches of related paths/concepts.</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 rounded-lg bg-slate-900 border border-white/5">
+                                <h4 class="text-lg font-bold text-primary mb-2">MongoDB – Document DB</h4>
+                                <ul class="text-sm text-slate-400 space-y-1">
+                                    <li>Stores unstructured or semi-structured data (documents, reports).</li>
+                                    <li>Flexible structure (JSON-like documents).</li>
+                                    <li>Adapted for organizing varied content.</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 rounded-lg bg-slate-900 border border-white/5">
+                                <h4 class="text-lg font-bold text-primary mb-2">Qdrant – Vector DB</h4>
+                                <ul class="text-sm text-slate-400 space-y-1">
+                                    <li>Optimized for high-dimensional semantic search.</li>
+                                    <li>Uses AI-generated embeddings.</li>
+                                    <li>Retrieves information based on meaning and context.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mb-4">The combination of these three systems ensures: performance, scalability, and contextual understanding of knowledge.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">BuildAI: Web Platform, Mobile App, LLM, and Search Engine</h3>
+                        <img src="assets/img/buildai/workflow.svg" alt="User Workflow" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Mobile Application (Flutter)</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li>Intuitive and responsive interface.</li>
+                                    <li>Integration with the AI search engine.</li>
+                                    <li>Offline access to resources.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Web Platform (PHP)</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li>Complete content management.</li>
+                                    <li>Addition/structuring of educational materials.</li>
+                                    <li>Connection with Neo4j, MongoDB, and Qdrant.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Large Language Model (LLM)</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li>Processes natural language queries.</li>
+                                    <li>Generates quick document summaries.</li>
+                                    <li>Provides intelligent contextual help.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">AI-Driven Search Engine</h4>
+                                <ul class="list-disc list-inside text-slate-300">
+                                    <li><strong>Vector Search (Qdrant):</strong> relevance by meaning, not keywords.</li>
+                                    <li><strong>Graph Search (Neo4j):</strong> exploration of related concepts.</li>
+                                    <li><strong>Document Indexing (MongoDB):</strong> structured navigation in data.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mb-4">This combination results in an integrated, scalable, and easy-to-use platform.</p>
+                    `,
+                    tags: ["LLM", "RAG", "Python", "Flutter"],
                     img: "project-buildai.png"
                 },
                 {
@@ -663,24 +991,118 @@ for j in range(epochs):
         w1 = weight_update(learning_rate, w1, grad(error, x1))
         # ... repeat for all weights ...</code></pre>
                         </div>
+                    `,
+                    tags: ["Machine Learning", "Python", "Maths"],
+                    img: "project-logistic.png"
+                },
+                {
+                    id: "flask",
+                    title: "API with Python Flask",
+                    desc: "Creating a complete RESTful API for pollution data (LCSQA).",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">During a university project, we worked on developing an API (Application Programming Interface). The goal was to create an API for environmental data provided by LCSQA (Laboratoire Central de Surveillance de la Qualité de l’Air).</p>
+                        <p class="mb-4">An API is a system that allows access to external data via HTTP or HTTPS requests. This system is particularly useful for implementing a microservices architecture.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">How does it work?</h3>
+                        <p class="mb-4">The functioning is simple: you make an HTTP request to the server, and in return, you access structured data in JSON format.</p>
+                        <img src="assets/img/api/api_diagram.svg" alt="API Diagram" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Advantages and Disadvantages of APIs</h3>
+                        <h4 class="text-xl font-bold mb-2 text-primary">Advantages:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li><strong>Ease of Integration:</strong> APIs enable seamless integration between different systems.</li>
+                            <li><strong>Efficiency:</strong> Access functionality without building from scratch.</li>
+                            <li><strong>Scalability:</strong> Easily scale by integrating additional services.</li>
+                            <li><strong>Automation:</strong> Facilitate automation without human intervention.</li>
+                            <li><strong>Improved User Experience:</strong> Enhance functionality with third-party services.</li>
+                        </ul>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Disadvantages:</h4>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Security Risks:</strong> Vulnerabilities if not properly secured.</li>
+                            <li><strong>Dependency:</strong> Reliance on external services availability.</li>
+                            <li><strong>Complexity:</strong> Can add complexity to system architecture.</li>
+                            <li><strong>Rate Limits:</strong> Restrictions on request numbers.</li>
+                            <li><strong>Maintenance:</strong> Ongoing updates required.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Creation Steps</h3>
+                        <img src="assets/img/api/api_workflow.svg" alt="API Workflow" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <ol class="list-decimal list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Define the objective</li>
+                            <li>Database Architecture</li>
+                            <li>Define data sources</li>
+                            <li>Import data</li>
+                            <li>Create Python code with Flask</li>
+                            <li>Deployment & Visualization</li>
+                        </ol>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Database Architecture</h4>
+                        <p class="mb-4">We identified 5 important tables: Polluants, Organismes, ZAS (Zone Administrative de Surveillance), Stations, and Mesures.</p>
+                        <img src="assets/img/api/architecture_bd.webp" alt="Database Schema" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">2. Importing Data</h4>
+                        <p class="mb-4">I used 3 scripts: <code>Recuperation.py</code> (download CSV), <code>Create_base.py</code> (create SQLite), and <code>Insert_data.py</code> (insert data).</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Example: Insert_data.py (Excerpt)
+def insert_data_from_csv(year, db_name="pollution_data.db"):
+    conn = sqlite3.connect(db_name)
+    cursor = conn.cursor()
+    # ... (read CSV and insert) ...
+    cursor.execute('''INSERT INTO Mesures (...) VALUES (...)''', (...))
+    conn.commit()</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Creating the API with Flask</h4>
+                        <p class="mb-4">The goal is to create routes containing JSON data. Here are some endpoints: <code>/organismes</code>, <code>/stations</code>, <code>/mesures</code>.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">@app.route('/stations', methods=['GET'])
+def get_stations():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Stations')
+    stations = cursor.fetchall()
+    conn.close()
+    return jsonify([dict(row) for row in stations])</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Data Visualization</h3>
+                        <p class="mb-4">I created a dashboard using PowerBI to visualize the data exposed by the API.</p>
+                        <img src="assets/img/api/dashboard.webp" alt="PowerBI Dashboard" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
-                        <p class="mb-4">By implementing Logistic Regression from scratch, we gained a deep understanding of the underlying mathematics—specifically how the model learns via gradient descent and minimizes loss. This foundation is crucial before mastering libraries like Scikit-Learn.</p>
+                        <p class="mb-4">Creating an API allows for externalizing data and separating the application into distinct services. It is an essential skill for modern development.</p>
                         
+                        <h3 class="text-2xl font-bold mb-4 text-white">Bibliography</h3>
+                        <p class="mb-4"><strong>Articles and Tutorials:</strong></p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li>“Creating a RESTful API with Python and Flask” by Miguel Grinberg.</li>
+                            <li>“Flask-RESTful Quickstart” on flask-restful.readthedocs.io.</li>
+                        </ul>
+                        <p class="mb-4"><strong>Documentation:</strong></p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li>Flask Documentation: <a href="https://flask.palletsprojects.com/en/2.0.x/" class="text-primary hover:underline">flask.palletsprojects.com</a></li>
+                            <li>SQLite Documentation: <a href="https://www.sqlite.org/docs.html" class="text-primary hover:underline">sqlite.org</a></li>
+                        </ul>
+                        <p class="mb-4"><strong>Video:</strong></p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li>“REST APIs with Flask and Python in 2022” by Tech With Tim on YouTube.</li>
+                        </ul>
+
                         <div class="flex gap-4 mt-8">
-                            <a href="https://github.com/AmmarSo/Diabet-detection-using-Logistic-Regression" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
-                                View Full Code on GitHub
+                            <a href="https://medium.com/@ammar.souchon/how-to-create-an-api-with-python-flask-5fbee3ebad5e" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                Read Full Article on Medium
                             </a>
                         </div>
                     `,
-                    fullDesc: "This project is a practical guide to Backend development with Python and Flask. It's not just about creating routes, but building a robust and scalable RESTful API. <br><br> <strong>Concepts Covered:</strong> <br> - <strong>Advanced Routing:</strong> Handling HTTP methods (GET, POST, PUT, DELETE) and URL parameters. <br> - <strong>MVC Structure:</strong> Organizing code to separate business logic, data models, and controllers. <br> - <strong>JSON & Serialization:</strong> Efficient communication between client and server. <br> - <strong>Best Practices:</strong> Error handling, HTTP status codes, and input data validation.",
-                    tags: ["Web Dev", "Python", "Flask", "API"],
-                    img: "project-buildai.png"
+                    tags: ["Python", "Flask", "API", "SQLite"],
+                    img: "project-api.png"
                 }
             ]
         },
         skills: {
-            title: "Technical Skills",
+            title: "Skills",
             categories: [
                 {
                     name: "Languages & Dev",
@@ -792,7 +1214,7 @@ function loadProjectDetail() {
 
     if (project) {
         container.innerHTML = `
-            <div class="fade-in-up">
+                        <div class="fade-in-up">
                 <div class="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-2xl">
                     <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-60 z-10"></div>
                     <img src="assets/img/${project.img}" alt="${project.title}" class="w-full h-full object-cover">
@@ -820,7 +1242,7 @@ function loadProjectDetail() {
                     </div>
                 </div>
             </div>
-        `;
+    `;
     } else {
         container.innerHTML = `<p class="text-center text-xl text-red-500">Projet non trouvé.</p>`;
     }
@@ -839,7 +1261,7 @@ function updateList(containerId, items, createItemFn) {
 
 function createEducationItem(item, index) {
     return `
-        <div class="relative pl-8 border-l-2 border-primary/30 fade-in-up" style="animation-delay: ${index * 0.1}s">
+    <div class="relative pl-8 border-l-2 border-primary/30 fade-in-up" style="animation-delay: ${index * 0.1}s">
             <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary shadow-[0_0_10px_rgba(14,165,233,0.5)]"></div>
             <div class="mb-1 text-sm text-primary font-mono">${item.date}</div>
             <h3 class="text-xl font-bold">${item.degree}</h3>
@@ -851,27 +1273,27 @@ function createEducationItem(item, index) {
 
 function createExperienceItem(item, index) {
     return `
-        <div class="relative mb-12 timeline-item fade-in-up">
-            <div class="md:flex items-center justify-between w-full ${index % 2 === 1 ? 'flex-row-reverse' : ''}">
-                <div class="md:w-5/12 mb-4 md:mb-0 ${index % 2 === 1 ? 'pl-8' : 'md:text-right pr-8'}">
-                    <h3 class="text-xl font-bold">${item.role}</h3>
-                    <div class="text-primary font-medium">${item.company}</div>
-                    <div class="text-sm text-slate-500 mt-1 font-mono">${item.date}</div>
-                </div>
-                <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(14,165,233,0.8)] transform -translate-x-1/2 z-10 mt-1.5"></div>
-                <div class="md:w-5/12 ${index % 2 === 1 ? 'md:text-right pr-8' : 'pl-8'}">
-                    <div class="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors">
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">${item.desc}</p>
-                    </div>
+    <div class="relative mb-12 timeline-item fade-in-up">
+        <div class="md:flex items-center justify-between w-full ${index % 2 === 1 ? 'flex-row-reverse' : ''}">
+            <div class="md:w-5/12 mb-4 md:mb-0 ${index % 2 === 1 ? 'pl-8' : 'md:text-right pr-8'}">
+                <h3 class="text-xl font-bold">${item.role}</h3>
+                <div class="text-primary font-medium">${item.company}</div>
+                <div class="text-sm text-slate-500 mt-1 font-mono">${item.date}</div>
+            </div>
+            <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(14,165,233,0.8)] transform -translate-x-1/2 z-10 mt-1.5"></div>
+            <div class="md:w-5/12 ${index % 2 === 1 ? 'md:text-right pr-8' : 'pl-8'}">
+                <div class="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors">
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">${item.desc}</p>
                 </div>
             </div>
+        </div>
         </div>
     `;
 }
 
 function createProjectItem(item, index) {
     return `
-        <a href="project.html?id=${item.id}" class="glass-card rounded-xl overflow-hidden group fade-in-up block hover:scale-[1.02] transition-transform duration-300">
+    <a href="project.html?id=${item.id}" class="glass-card rounded-xl overflow-hidden group fade-in-up block hover:scale-[1.02] transition-transform duration-300">
             <div class="h-48 bg-slate-900 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-80 z-10"></div>
                 <img src="assets/img/${item.img}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
@@ -891,7 +1313,7 @@ function createProjectItem(item, index) {
 
 function createSkillItem(category, index) {
     return `
-        <div class="glass-card p-6 rounded-xl fade-in-up">
+    <div class="glass-card p-6 rounded-xl fade-in-up">
             <h3 class="text-lg font-bold mb-4 border-b border-white/10 pb-2">${category.name}</h3>
             <div class="flex flex-wrap gap-2">
                 ${category.items.split(', ').map(skill => `
