@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150">
+  <defs>
+    <style>
+      .text { font-family: 'Times New Roman', serif; fill: #e2e8f0; }
+      .math { font-style: italic; }
+      .sub { font-size: 0.7em; }
+    </style>
+  </defs>
+  
+  <rect width="400" height="150" fill="#0f172a" rx="10" ry="10"/>
+  
+  <text x="50%" y="40" text-anchor="middle" class="text" font-size="20" font-weight="bold">Gini Impurity</text>
+  
+  <g transform="translate(100, 90)">
+    <text x="0" y="0" class="text math" font-size="24">Gini(D) = 1 - </text>
+    <text x="110" y="0" class="text math" font-size="36">∑</text>
+    <text x="135" y="-15" class="text math sub">C</text>
+    <text x="135" y="15" class="text math sub">i=1</text>
+    <text x="160" y="0" class="text math" font-size="24">(p</text>
+    <text x="180" y="5" class="text math sub">i</text>
+    <text x="190" y="0" class="text math" font-size="24">)²</text>
+  </g>
+</svg>
