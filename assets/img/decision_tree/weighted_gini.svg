@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 80" fill="none">
+  <style>
+    .text { font-family: 'Computer Modern', serif; fill: #e2e8f0; font-size: 20px; }
+    .sub { font-size: 14px; }
+    .symbol { fill: #38bdf8; }
+    .frac-line { stroke: #e2e8f0; stroke-width: 1.5; }
+  </style>
+  
+  <!-- Left Term -->
+  <text x="10" y="45" class="text">Gini<tspan dy="5" class="sub">split</tspan><tspan dy="-5"> = </tspan></text>
+  
+  <!-- Fraction 1 -->
+  <text x="110" y="30" class="text">N<tspan dy="5" class="sub">left</tspan></text>
+  <line x1="110" y1="40" x2="150" y2="40" class="frac-line"/>
+  <text x="125" y="60" class="text">N</text>
+  
+  <text x="160" y="45" class="text"> × Gini(left) <tspan class="symbol">+</tspan></text>
+  
+  <!-- Fraction 2 -->
+  <text x="290" y="30" class="text">N<tspan dy="5" class="sub">right</tspan></text>
+  <line x1="290" y1="40" x2="330" y2="40" class="frac-line"/>
+  <text x="305" y="60" class="text">N</text>
+  
+  <text x="340" y="45" class="text"> × Gini(right)</text>
+</svg>

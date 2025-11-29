@@ -81,7 +81,14 @@ const translationsData = {
                         <h3 class="text-2xl font-bold mb-4 text-white">Résumé</h3>
                         <p class="mb-4">Notre projet vise à faciliter le travail des professionnels enseignant les métiers du bâtiment en leur fournissant une plateforme qui centralise les informations, permet des recherches et offre une communication avec une IA spécialisée. Pour y parvenir, nous avons utilisé des technologies de web scraping, de nouveaux types de bases de données et l’intelligence artificielle.</p>
                         
-
+                        <div class="flex gap-4 mb-8">
+                            <a href="assets/img/buildai/Poster_technique_BuildAI.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Voir le Poster Technique (PDF)
+                            </a>
+                        </div>
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Vue d’ensemble : Pourquoi BuildAI est une révolution ?</h3>
                         <p class="mb-4">BuildAI est une plateforme innovante qui révolutionne l’accès aux connaissances liées au bâtiment en s’appuyant sur la récupération et la structuration de données pilotées par l’IA.</p>
@@ -191,6 +198,69 @@ const translationsData = {
                     img: "project-buildai.png"
                 },
                 {
+                    id: "mnist",
+                    title: "Réseau de Neurones (MNIST)",
+                    desc: "Implémentation d'un réseau de neurones à partir de zéro (NumPy uniquement) pour la reconnaissance de chiffres.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">Le dataset MNIST (Modified National Institute of Standards and Technology) est la base de données de référence pour la reconnaissance d'images. Il contient 60 000 images d'entraînement et 10 000 images de test de chiffres manuscrits.</p>
+                        <p class="mb-4">L'objectif de ce projet est de démystifier le "Deep Learning" en construisant un réseau de neurones complet sans utiliser de frameworks comme TensorFlow ou PyTorch. Juste des mathématiques et du code Python pur (avec NumPy).</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Architecture du Réseau</h3>
+                        <p class="mb-4">Nous avons conçu un Perceptron Multi-Couches (MLP) simple avec :</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Couche d'entrée :</strong> 784 neurones (images 28x28 pixels aplaties).</li>
+                            <li><strong>Couche cachée :</strong> 10 neurones avec activation ReLU.</li>
+                            <li><strong>Couche de sortie :</strong> 10 neurones (chiffres 0-9) avec activation Softmax.</li>
+                        </ul>
+                        <img src="assets/img/mnist/architecture.svg" alt="Architecture Réseau de Neurones" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Les Mathématiques du Réseau</h3>
+                        <p class="mb-4">Le fonctionnement repose sur deux phases principales : la propagation avant (Forward Propagation) et la rétropropagation (Backpropagation).</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Forward Propagation</h4>
+                        <p class="mb-2">On fait passer les données à travers le réseau pour obtenir une prédiction.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def forward_prop(W1, b1, W2, b2, X):
+    Z1 = W1.dot(X) + b1
+    A1 = ReLU(Z1)
+    Z2 = W2.dot(A1) + b2
+    A2 = softmax(Z2)
+    return Z1, A1, Z2, A2</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">2. Fonctions d'Activation</h4>
+                        <p class="mb-4"><strong>ReLU (Rectified Linear Unit) :</strong> Introduit de la non-linéarité.</p>
+                        <img src="assets/img/mnist/relu.svg" alt="ReLU Formula" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <p class="mb-4"><strong>Softmax :</strong> Transforme les scores en probabilités.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Backpropagation</h4>
+                        <p class="mb-2">On calcule l'erreur et on ajuste les poids pour minimiser cette erreur (Descente de Gradient).</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def back_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
+    dZ2 = A2 - one_hot(Y)
+    dW2 = 1 / m * dZ2.dot(A1.T)
+    db2 = 1 / m * np.sum(dZ2)
+    dZ1 = W2.T.dot(dZ2) * ReLU_deriv(Z1)
+    dW1 = 1 / m * dZ1.dot(X.T)
+    db1 = 1 / m * np.sum(dZ1)
+    return dW1, db1, dW2, db2</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Résultats</h3>
+                        <p class="mb-4">Après entraînement sur le dataset MNIST, ce modèle simple atteint une précision d'environ <strong>85-90%</strong> sur les données de test.</p>
+                        <p class="mb-4">Ce projet prouve qu'il n'est pas nécessaire d'avoir une "boîte noire" pour faire de l'IA. Comprendre les mathématiques sous-jacentes donne une maîtrise totale sur le modèle.</p>
+
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                Voir le Code Complet sur GitHub
+                            </a>
+                        </div>
+                    `,
+                    tags: ["Python", "Deep Learning", "Maths", "NumPy"],
+                    img: "mnist/cover.png"
+                },
+                {
                     id: "knn",
                     title: "Iris detection using K-NN",
                     desc: "Implémentation complète de l'algorithme KNN sans librairie, expliqué sur le dataset Iris.",
@@ -271,10 +341,222 @@ print("Class of Pnew :", max(iris_class, key=iris_class.get))</code></pre>
                 },
                 {
                     id: "decision-tree",
-                    title: "Decision Tree from Scratch",
-                    desc: "Construction d'un arbre de décision sans Scikit-Learn sur le dataset Titanic.",
-                    fullDesc: "Ce projet est une plongée profonde dans les algorithmes d'arbres de décision. J'ai construit un classifieur complet en Python pur pour prédire la survie des passagers du Titanic. <br><br> <strong>Détails techniques :</strong> <br> - <strong>Entropie & Gain d'Information :</strong> J'ai codé les formules mathématiques de l'entropie de Shannon pour évaluer la pureté des nœuds et maximiser le gain d'information à chaque division (split). <br> - <strong>Récursivité :</strong> L'arbre est construit de manière récursive, divisant les données jusqu'à atteindre une profondeur maximale ou une pureté suffisante. <br> - <strong>Gestion des données :</strong> Traitement des variables catégorielles et numériques sans les abstractions de Pandas/Scikit-Learn. <br><br> Ce projet démontre une maîtrise des structures de données et des mathématiques sous-jacentes au Machine Learning.",
-                    tags: ["Python", "Machine Learning", "Titanic"],
+                    title: "Arbre de Décision (From Scratch)",
+                    desc: "Implémentation d'un arbre de décision sans Scikit-Learn sur le dataset Titanic.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">Nous allons explorer le fonctionnement d'un arbre de décision sans utiliser de bibliothèques magiques comme scikit-learn. C'est une approche "from scratch", conçue pour vous aider à comprendre véritablement comment le modèle fonctionne en interne.</p>
+                        <p class="mb-4">C'est étonnamment simple : dans cet article, j'utilise la programmation orientée objet en Python pour construire un classifieur par arbre de décision étape par étape.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Qu'est-ce qu'un Arbre de Décision ?</h3>
+                        <p class="mb-4">Un arbre de décision est l'un des algorithmes d'apprentissage automatique les plus simples mais l'un des plus puissants à comprendre.</p>
+                        <p class="mb-4">À la base, il fonctionne comme une série de questions. Chaque nœud interne pose une question oui/non sur une caractéristique (par exemple, "Le passager est-il un homme ?"), et selon la réponse, les données vont à gauche ou à droite.</p>
+                        <p class="mb-4">Cela continue jusqu'à ce que les données atteignent une feuille, où une prédiction finale est faite comme "A survécu" ou "N'a pas survécu".</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Idée de base et intuition</h4>
+                        <p class="mb-4">L'arbre est construit en divisant le jeu de données plusieurs fois en sous-groupes qui sont de plus en plus "purs" (groupes où la plupart des passagers partagent le même résultat).</p>
+                        <p class="mb-4">À chaque étape, l'algorithme choisit la meilleure question pour réduire l'incertitude, basée sur une métrique comme l'impureté de Gini ou l'entropie.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Objectif de ce Projet</h3>
+                        <p class="mb-4">Dans ce projet, nous ne voulons pas seulement utiliser un arbre de décision — nous voulons le construire à partir de zéro, ligne par ligne.</p>
+                        <p class="mb-4">L'objectif est simple : comprendre ce qui se passe réellement sous le capot.</p>
+                        <p class="mb-4">Nous entraînerons notre arbre de décision sur le dataset Titanic, l'un des plus célèbres en data science. C'est une classification binaire : survécu (1) ou non (0), basée sur des caractéristiques comme le sexe, l'âge et la classe.</p>
+                        <p class="mb-4">Mais au lieu d'utiliser un modèle pré-construit de Scikit-Learn, nous allons :</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Tout implémenter nous-mêmes en Python pur</li>
+                            <li>Utiliser une approche Orientée Objet (POO) avec des classes comme <code>DecisionTree</code> et <code>Node</code></li>
+                            <li>Éviter toute bibliothèque de machine learning pour rester proche de la logique</li>
+                            <li>Comprendre chaque décision : comment les divisions sont faites, comment la pureté est calculée, comment les prédictions sont faites</li>
+                        </ul>
+                        <p class="mb-4">Ce projet ne vise pas à atteindre la plus haute précision. Il s'agit d'acquérir une véritable intuition en construisant l'outil soi-même.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Structure du Code</h3>
+                        <p class="mb-4">Pour garder les choses propres et modulaires, le projet est structuré en utilisant deux classes principales :</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Node.py</h4>
+                        <p class="mb-4">Cette classe représente chaque nœud de l'arbre — que ce soit un nœud de décision (avec une condition de division) ou une feuille (avec une prédiction).</p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li><code>feature_index</code> : quelle caractéristique est utilisée pour diviser</li>
+                            <li><code>threshold</code> : valeur de comparaison</li>
+                            <li><code>left / right</code> : nœuds enfants</li>
+                            <li><code>is_leaf</code> : Vrai si c'est une feuille</li>
+                            <li><code>prediction</code> : valeur prédite si c'est une feuille</li>
+                            <li><code>samples_count</code> : nombre d'échantillons ayant atteint ce nœud</li>
+                        </ul>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">2. DecisionTree.py</h4>
+                        <p class="mb-4">C'est la classe principale qui va :</p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li>Entraîner l'arbre (<code>fit</code>)</li>
+                            <li>Le construire récursivement (<code>build_tree</code>)</li>
+                            <li>Trouver la meilleure division (<code>best_split</code>)</li>
+                            <li>Faire des prédictions (<code>predict</code> et <code>predict_sample</code>)</li>
+                            <li>Utiliser Gini ou l'entropie comme critère de division</li>
+                        </ul>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Main.py</h4>
+                        <p class="mb-4">C'est le script qui lie tout ensemble. Il gère le chargement des données, la construction du modèle et l'évaluation des performances.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Le Dataset Titanic</h3>
+                        <p class="mb-4">Pour tester notre arbre, nous utilisons l'un des datasets les plus célèbres : le Titanic.</p>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-left text-slate-300 border-collapse">
+                                <thead>
+                                    <tr class="border-b border-slate-700">
+                                        <th class="py-2 px-4">Feature</th>
+                                        <th class="py-2 px-4">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Pclass</td><td class="py-2 px-4">Classe passager (1ère, 2ème, 3ème)</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Sex</td><td class="py-2 px-4">Genre (homme ou femme)</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Age</td><td class="py-2 px-4">Âge en années</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">SibSp</td><td class="py-2 px-4">Nombre de frères/époux à bord</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Parch</td><td class="py-2 px-4">Nombre de parents/enfants à bord</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Fare</td><td class="py-2 px-4">Prix du billet</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Embarked</td><td class="py-2 px-4">Port d'embarquement (C, Q, S)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Construction de l'Arbre Étape par Étape</h3>
+                        <p class="mb-4">Maintenant, plongeons sous le capot et explorons la logique derrière un arbre de décision — pas seulement conceptuellement, mais mathématiquement et en code.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Impureté de Gini</h4>
+                        <p class="mb-4">Objectif : mesurer à quel point un ensemble d'exemples est "pur". Si un nœud ne contient que des survivants ou que des non-survivants, il est parfaitement pur. Sinon, l'impureté augmente.</p>
+                        <img src="assets/img/decision_tree/gini_formula.svg" alt="Formule Impureté de Gini" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <p class="mb-4 text-sm text-slate-400">Où Pi est la proportion d'échantillons de la classe i dans le dataset D, et C est le nombre de classes.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def gini_impurity(y):
+    counts = Counter(y)
+    impurity = 1.0
+    for label in counts:
+        prob_of_lbl = counts[label] / len(y)
+        impurity -= prob_of_lbl ** 2
+    return impurity</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Meilleure Division (Best Split)</h4>
+                        <p class="mb-4">C'est l'étape la plus importante. Pour chaque caractéristique, nous essayons chaque seuil possible, divisons les données et calculons l'impureté de Gini pondérée. L'objectif est de minimiser l'impureté après la division.</p>
+                        <img src="assets/img/decision_tree/weighted_gini.svg" alt="Formule Gini Pondéré" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def best_split(X, y):
+    best_gain = float('inf')
+    best_feature, best_threshold = None, None
+
+    for feature in range(X.shape[1]):
+        thresholds = np.unique(X[:, feature])
+        for t in thresholds:
+            left_idx = X[:, feature] <= t
+            right_idx = X[:, feature] > t
+
+            if len(y[left_idx]) == 0 or len(y[right_idx]) == 0:
+                continue
+
+            gini_left = gini_impurity(y[left_idx])
+            gini_right = gini_impurity(y[right_idx])
+            gini_split = (len(y[left_idx]) * gini_left + len(y[right_idx]) * gini_right) / len(y)
+
+            if gini_split < best_gain:
+                best_gain = gini_split
+                best_feature = feature
+                best_threshold = t
+
+    return best_feature, best_threshold</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Construction Récursive de l'Arbre</h3>
+                        <p class="mb-4">Une fois la meilleure division trouvée, nous divisons les données et répétons le processus sur les deux sous-ensembles (gauche et droite). C'est géré par la méthode <code>build_tree()</code>.</p>
+                        <p class="mb-4">La récursion s'arrête quand :</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Tous les échantillons appartiennent à la même classe (pur)</li>
+                            <li>Ou plus aucune division utile ne peut être faite</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Logique de Prédiction</h3>
+                        <p class="mb-4">Pour prédire, nous suivons l'arbre : à chaque nœud interne, on vérifie la valeur de la caractéristique, on va à gauche ou à droite selon le seuil, jusqu'à atteindre une feuille.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def predict_sample(self, x):
+    node = self.root
+    while not node.is_leaf:
+        if x[node.feature_index] <= node.threshold:
+            node = node.left
+        else:
+            node = node.right
+    return node.prediction</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Entraînement sur les Données Titanic</h3>
+                        <p class="mb-4">Maintenant que nous avons construit notre arbre, il est temps de l'entraîner sur un dataset réel.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Préparation des Données</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Step 1: Load and prepare the dataset
+def load_titanic_data(file_path):
+    # ... (code to load CSV) ...
+    # Use selected features: Pclass, Sex, Age
+    pclass = int(row['Pclass'])
+    sex = 0 if row['Sex'] == 'male' else 1  # Encode: male = 0, female = 1
+    age = float(row['Age']) if row['Age'] else None
+    # ...
+    return X, y</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Entraînement du Modèle</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Initialize and train the decision tree
+tree = DecisionTree(max_depth=3, min_samples_split=2, criterion="gini")
+tree.fit(X, y)</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Évaluation de la Précision</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Step 3: Predict on training data
+predictions = tree.predict(X)
+
+# Step 4: Compare predictions to actual results
+correct = sum(1 for i in range(len(y)) if y[i] == predictions[i])
+accuracy = correct / len(y)
+print(f"\nAccuracy on training data: {accuracy:.2f}")</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Visualisation de l'Arbre</h3>
+                        <p class="mb-4">Enfin, j'ai affiché et visualisé la structure de l'arbre de décision.</p>
+                        <img src="assets/img/decision_tree/tree_viz.svg" alt="Visualisation Arbre de Décision" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Forces et Limites</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-primary">Forces</h4>
+                                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                                    <li><strong>Facile à Comprendre :</strong> Reflète la prise de décision humaine.</li>
+                                    <li><strong>Pas de Mise à l'Échelle :</strong> Divise sur des seuils, pas des distances.</li>
+                                    <li><strong>Données Mixtes :</strong> Gère bien le numérique et le catégoriel.</li>
+                                    <li><strong>Efficace sur Petits Datasets :</strong> Bon pour des insights rapides.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-primary">Limites</h4>
+                                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                                    <li><strong>Surapprentissage (Overfitting) :</strong> Peut apprendre par cœur sans élagage.</li>
+                                    <li><strong>Instable :</strong> Sensible aux petits changements de données.</li>
+                                    <li><strong>Biaisé vers les Attributs Dominants :</strong> Favorise les caractéristiques avec beaucoup de niveaux.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
+                        <p class="mb-4">Dans cet article, nous n'avons pas juste utilisé un arbre de décision — nous en avons construit un de zéro. Pas de raccourcis, pas de fonctions magiques de scikit-learn.</p>
+                        <p class="mb-4">En faisant tout manuellement, nous avons compris comment le modèle fonctionne réellement. Cette connaissance est essentielle pour tout ingénieur ML avant de passer aux frameworks de haut niveau.</p>
+                        <p class="mb-4">Quand vous construisez quelque chose de zéro, vous cessez d'être un "utilisateur d'outils" pour devenir un créateur de solutions.</p>
+
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                Code complet sur mon GitHub
+                            </a>
+                        </div>
+                    `,
+                    tags: ["Python", "ML from Scratch", "OOP", "Titanic"],
                     img: "project-dt.png"
                 },
                 {
@@ -385,102 +667,6 @@ for j in range(epochs):
                     img: "project-logistic.png"
                 },
                 {
-                    id: "mnist",
-                    title: "Neural Network from scratch (MNIST)",
-                    desc: "Réseau de neurones complet pour la reconnaissance de chiffres manuscrits.",
-                    fullDesc: `
-                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
-                        <p class="mb-4">Le système de reconnaissance de chiffres manuscrits existe déjà, mais j'ai travaillé pour améliorer mes compétences en réseaux de neurones et je souhaite partager mon expérience sur le sujet. Les réseaux de neurones sont très importants aujourd'hui, car nous les rencontrons dans de nombreuses situations, de la reconnaissance de plantes à l'imagerie médicale. Mon objectif dans cet article est de développer un réseau de neurones à partir de zéro, et pour ce faire, j'ai choisi l'un des problèmes de classification les plus basiques : "Reconnaissance de chiffres manuscrits".</p>
-
-                        <h3 class="text-2xl font-bold mb-4 text-white">Réflexion</h3>
-                        <p class="mb-4">La première étape avant de coder est de réfléchir et d'apprendre sur les réseaux de neurones. Le réseau de neurones est très simple et peut être simplifié comme suit :</p>
-                        <img src="assets/img/mnist/architecture.svg" alt="Architecture Réseau de Neurones" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
-                        
-                        <p class="mb-4">Nous pouvons voir 3 couches différentes :</p>
-                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
-                            <li><strong>Couche d'Entrée :</strong> C'est la première couche pour récupérer les informations d'entrée.</li>
-                            <li><strong>Couches Cachées :</strong> C'est la partie la plus importante du réseau de neurones, le traitement invisible.</li>
-                            <li><strong>Couche de Sortie :</strong> La couche de sortie est le résultat de notre réseau.</li>
-                        </ul>
-
-                        <p class="mb-4">Pour la question des nombres manuscrits, nous allons définir le nombre d'entrées et de sorties. J'utilise le dataset MNIST (images 28x28). Nous avons 10 possibilités pour les couches de sortie (0 à 9).</p>
-                        <p class="mb-4 text-sm text-slate-400">Nombre de neurones dans la première couche (entrée) : 28 x 28 = 784 pixels<br>Nombre de neurones dans la dernière couche (sortie) : 10 (nombre de classes)</p>
-
-                        <h3 class="text-2xl font-bold mb-4 text-white">Codage</h3>
-                        <p class="mb-4">Maintenant, il est temps de créer le réseau de neurones à partir de zéro. Nous avons 4 étapes pour faire cela :</p>
-                        <ol class="list-decimal list-inside mb-6 space-y-2 text-slate-300">
-                            <li>Créer une classe Neuron</li>
-                            <li>Créer une classe Layer</li>
-                            <li>Créer une classe Network</li>
-                            <li>Créer un code pour entraîner le réseau de neurones et tester la précision</li>
-                        </ol>
-
-                        <h4 class="text-xl font-bold mb-2 text-primary">Classe Neuron</h4>
-                        <p class="mb-4">Le neurone est basé sur ce que nous savons de l'activité électrique du cerveau humain. Le neurone est très simple à coder, nous avons 4 méthodes importantes : <code>__init__</code>, <code>activation_function</code>, <code>forward</code>, <code>backward</code>.</p>
-                        
-                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
-<pre><code class="language-python">def __init__(self, input_size):
-    self.weights = np.random.randn(input_size) * np.sqrt(2. / input_size)
-    self.bias = 0.0
-    self.last_inputs = None
-    self.last_z = None</code></pre>
-                        </div>
-
-                        <h4 class="text-xl font-bold mb-2 text-primary">Fonction d'Activation (ReLU)</h4>
-                        <p class="mb-4">Nous utilisons la fonction d'activation la plus simple et la plus populaire (ReLU).</p>
-                        <img src="assets/img/mnist/relu.svg" alt="Fonction ReLU" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
-                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
-<pre><code class="language-python">def activation_function(self, x):
-    return np.maximum(0, x)</code></pre>
-                        </div>
-
-                        <h4 class="text-xl font-bold mb-2 text-primary">Forward (Propagation)</h4>
-                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
-<pre><code class="language-python">def forward(self, inputs):
-    self.last_inputs = np.array(inputs)
-    self.last_z = np.dot(self.weights, self.last_inputs) + self.bias
-    return self.activation_function(self.last_z)</code></pre>
-                        </div>
-
-                        <h4 class="text-xl font-bold mb-2 text-primary">Backward (Rétropropagation)</h4>
-                        <p class="mb-4">Dernière méthode et la plus importante. Nous calculons d'abord la dérivée de la fonction d'activation.</p>
-                        <img src="assets/img/mnist/relu_derivative.svg" alt="Dérivée ReLU" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
-                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
-<pre><code class="language-python">def backward(self, dL_dout, learning_rate):
-    dL_dz = dL_dout * (1 if self.last_z > 0 else 0)
-    dL_dw = dL_dz * self.last_inputs
-    dL_db = dL_dz
-    self.weights -= learning_rate * dL_dw
-    self.bias -= learning_rate * dL_db
-    dL_dx = self.weights * dL_dz
-    return dL_dx</code></pre>
-                        </div>
-
-                        <h3 class="text-2xl font-bold mb-4 text-white">Entraînement du Modèle</h3>
-                        <p class="mb-4">Le processus d'entraînement implique plusieurs étapes clés : Forward Pass, Calcul de la Perte (Cross-Entropy), Backward Pass, et Mise à jour des Paramètres.</p>
-                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
-<pre><code class="language-python"># Training Loop (Simplified)
-for epoch in range(epochs):
-    for i in range(len(train_images)):
-        outputs = network.forward(train_images[i])
-        loss = cross_entropy_loss(train_labels[i], outputs)
-        dL_dout = outputs - train_labels[i]
-        network.backward(dL_dout, learning_rate)</code></pre>
-                        </div>
-
-                        <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
-                        <p class="mb-4">Nous pouvons conclure que le réseau de neurones est un domaine fascinant. Le cas des chiffres manuscrits est le plus simple pour commencer. Dans ce cas, nous pouvons observer de bonnes performances grâce à 350 neurones cachés, un taux d'apprentissage de 0.001 et 3 époques.</p>
-                        
-                        <div class="flex gap-4 mt-8">
-                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
-                                Voir le Code Complet sur GitHub
-                            </a>
-                        </div>
-                    `,
-                    tags: ["Deep Learning", "Python", "Neural Networks"],
-                    img: "mnist/cover.png"
-                },
-                {
                     id: "flask",
                     title: "API avec Python Flask",
                     desc: "Création d'une API RESTful complète pour les données de pollution (LCSQA).",
@@ -587,10 +773,10 @@ def get_stations():
             ]
         },
         skills: {
-            title: "Compétences Techniques",
+            title: "Compétences",
             categories: [
                 {
-                    name: "Langages & Dev",
+                    name: "Langages & Dév",
                     items: "Python, Dart, SQL, PL/SQL"
                 },
                 {
@@ -605,7 +791,7 @@ def get_stations():
         },
         footer: {
             rights: "Tous droits réservés.",
-            made_with: "Conçu avec passion et code."
+            made_with: "Conçu avec passion et du code."
         }
     },
     en: {
@@ -627,12 +813,12 @@ def get_stations():
             cta_contact: "Contact Me"
         },
         about: {
-            title: "Profile",
-            description: "Engineering student in Health Technologies (EPISEN, UPEC), specializing in Big Data & AI. Currently an apprentice at the Ministry of Economy (Python development and test automation), I am looking for a new apprenticeship in 2026 focused on AI applied to intelligent systems.",
+            title: "About Me",
+            description: "Engineering student in Health Technologies (EPISEN, UPEC), specializing in Big Data & AI. Currently an apprentice at the Ministry of Economy (Python development and test automation), I am looking for a new apprenticeship for 2026 focused on AI applied to intelligent systems.",
             values: {
                 title: "My Strengths",
                 v1: "Perseverance",
-                v2: "Relational Skills",
+                v2: "Relational",
                 v3: "Passion"
             }
         },
@@ -643,13 +829,13 @@ def get_stations():
                     degree: "Engineer in Health Technologies",
                     school: "EPISEN (UPEC) - Vitry-sur-Seine",
                     date: "Sept 2025 - Present",
-                    desc: "Specialization in Big Data, AI, Network and Development."
+                    desc: "Specialization in Big Data, AI, Network, and Development."
                 },
                 {
                     degree: "BUT Computer Science",
-                    school: "IUT of Créteil-Vitry (UPEC)",
+                    school: "IUT de Créteil-Vitry (UPEC)",
                     date: "Sept 2022 - Aug 2025",
-                    desc: "Track: Data Administration, Management and Exploitation."
+                    desc: "Track: Data Administration, Management, and Exploitation."
                 }
             ]
         },
@@ -660,18 +846,18 @@ def get_stations():
                     role: "Apprentice – Python Developer (Automated Tests)",
                     company: "Ministry of Economy and Finance (DDFIP)",
                     date: "Sept 2025 - Present",
-                    desc: "Development of Python scripts for automated testing (Security, Non-regression). AGILE/SCRUM project management."
+                    desc: "Development of Python scripts for automated tests (Security, Non-regression). AGILE/SCRUM project management."
                 },
                 {
-                    role: "Apprentice – IT Asset Manager & Tool Dev",
+                    role: "Apprentice – Fleet Manager & Tool Dev",
                     company: "Ministry of Economy and Finance (DDFIP)",
                     date: "Sept 2024 - Aug 2025",
                     desc: "Mobile app dev (Dart/Flutter) for inventory. Automation scripts (AutoIT, Python). Compliance testing."
                 },
                 {
                     role: "Intern – Web/Mobile Dev & AI",
-                    company: "LISSI Lab / ADP Consortium",
-                    date: "Apr 2024 - Jul 2024",
+                    company: "LISSI Laboratory / ADP Consortium",
+                    date: "April 2024 - July 2024",
                     desc: "Computer vision for plant recognition (Python). Scraping (BeautifulSoup, Selenium). European project."
                 }
             ]
@@ -687,7 +873,14 @@ def get_stations():
                         <h3 class="text-2xl font-bold mb-4 text-white">Summary</h3>
                         <p class="mb-4">Our project aims to facilitate the work of professionals teaching construction trades by providing a platform that centralizes information, enables searches, and offers communication with a specialized AI. To achieve this, we used web scraping technologies, new types of databases, and artificial intelligence.</p>
                         
-
+                        <div class="flex gap-4 mb-8">
+                            <a href="assets/img/buildai/Poster_technique_BuildAI.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                View Technical Poster (PDF)
+                            </a>
+                        </div>
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Overview: Why BuildAI is a Revolution?</h3>
                         <p class="mb-4">BuildAI is an innovative platform that revolutionizes access to construction-related knowledge by leveraging AI-driven data retrieval and structuring.</p>
@@ -754,7 +947,7 @@ def get_stations():
                         </div>
                         <p class="mb-4">The combination of these three systems ensures: performance, scalability, and contextual understanding of knowledge.</p>
 
-                        <h3 class="text-2xl font-bold mb-4 text-white">BuildAI: Web Platform, Mobile App, LLM, and Search Engine</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-white">BuildAI: Web Platform, Mobile Application, LLM and Search Engine</h3>
                         <img src="assets/img/buildai/workflow.svg" alt="User Workflow" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
                         
                         <div class="space-y-4 mb-6">
@@ -778,7 +971,7 @@ def get_stations():
                                 <h4 class="text-xl font-bold text-white mb-1">Large Language Model (LLM)</h4>
                                 <ul class="list-disc list-inside text-slate-300">
                                     <li>Processes natural language queries.</li>
-                                    <li>Generates quick document summaries.</li>
+                                    <li>Generates quick summaries of documents.</li>
                                     <li>Provides intelligent contextual help.</li>
                                 </ul>
                             </div>
@@ -791,29 +984,92 @@ def get_stations():
                                 </ul>
                             </div>
                         </div>
-                        <p class="mb-4">This combination results in an integrated, scalable, and easy-to-use platform.</p>
+                        <p class="mb-4">This combination provides an integrated, scalable, and easy-to-use platform.</p>
                     `,
                     tags: ["LLM", "RAG", "Python", "Flutter"],
                     img: "project-buildai.png"
                 },
                 {
-                    id: "knn",
-                    title: "Iris detection using K-NN",
-                    desc: "Complete implementation of KNN algorithm without libraries, explained on Iris dataset.",
+                    id: "mnist",
+                    title: "Neural Network (MNIST)",
+                    desc: "Implementation of a neural network from scratch (NumPy only) for digit recognition.",
                     fullDesc: `
                         <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
-                        <p class="mb-4">K-Nearest Neighbors is one of the simplest machine learning algorithms. If you want to start learning machine learning, it’s an easy and intuitive place to begin.</p>
-                        <p class="mb-4">It works by calculating distances and using a majority vote to determine the correct class for a new data point.</p>
+                        <p class="mb-4">The MNIST dataset (Modified National Institute of Standards and Technology) is the benchmark database for image recognition. It contains 60,000 training images and 10,000 test images of handwritten digits.</p>
+                        <p class="mb-4">The goal of this project is to demystify "Deep Learning" by building a complete neural network without using frameworks like TensorFlow or PyTorch. Just mathematics and pure Python code (with NumPy).</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Network Architecture</h3>
+                        <p class="mb-4">We designed a simple Multi-Layer Perceptron (MLP) with:</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li><strong>Input Layer:</strong> 784 neurons (flattened 28x28 pixel images).</li>
+                            <li><strong>Hidden Layer:</strong> 10 neurons with ReLU activation.</li>
+                            <li><strong>Output Layer:</strong> 10 neurons (digits 0-9) with Softmax activation.</li>
+                        </ul>
+                        <img src="assets/img/mnist/architecture.svg" alt="Neural Network Architecture" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">The Mathematics of the Network</h3>
+                        <p class="mb-4">The operation relies on two main phases: Forward Propagation and Backpropagation.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Forward Propagation</h4>
+                        <p class="mb-2">Data is passed through the network to get a prediction.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def forward_prop(W1, b1, W2, b2, X):
+    Z1 = W1.dot(X) + b1
+    A1 = ReLU(Z1)
+    Z2 = W2.dot(A1) + b2
+    A2 = softmax(Z2)
+    return Z1, A1, Z2, A2</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">2. Activation Functions</h4>
+                        <p class="mb-4"><strong>ReLU (Rectified Linear Unit):</strong> Introduces non-linearity.</p>
+                        <img src="assets/img/mnist/relu.svg" alt="ReLU Formula" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <p class="mb-4"><strong>Softmax:</strong> Transforms scores into probabilities.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Backpropagation</h4>
+                        <p class="mb-2">We calculate the error and adjust the weights to minimize this error (Gradient Descent).</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def back_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
+    dZ2 = A2 - one_hot(Y)
+    dW2 = 1 / m * dZ2.dot(A1.T)
+    db2 = 1 / m * np.sum(dZ2)
+    dZ1 = W2.T.dot(dZ2) * ReLU_deriv(Z1)
+    dW1 = 1 / m * dZ1.dot(X.T)
+    db1 = 1 / m * np.sum(dZ1)
+    return dW1, db1, dW2, db2</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Results</h3>
+                        <p class="mb-4">After training on the MNIST dataset, this simple model achieves an accuracy of about <strong>85-90%</strong> on the test data.</p>
+                        <p class="mb-4">This project proves that you don't need a "black box" to do AI. Understanding the underlying mathematics gives total mastery over the model.</p>
+
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                View Full Code on GitHub
+                            </a>
+                        </div>
+                    `,
+                    tags: ["Python", "Deep Learning", "Maths", "NumPy"],
+                    img: "mnist/cover.png"
+                },
+                {
+                    id: "knn",
+                    title: "Iris detection using K-NN",
+                    desc: "Complete implementation of K-NN algorithm without libraries, explained on the Iris dataset.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">K-Nearest Neighbors (K-NN) is one of the simplest machine learning algorithms. If you want to start learning Machine Learning, it's an easy and intuitive starting point.</p>
+                        <p class="mb-4">It works by calculating distances and using a majority vote to determine the correct class of a new data point.</p>
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Explanation</h3>
-                        <p class="mb-4">The K-NN algorithm is based on distance calculation to measure how close one point is to another (like a new point, P-new).</p>
-                        <p class="mb-4">Once all distances are computed, the algorithm performs a vote. We choose a value for k (the number of neighbors), select the k closest points, retrieve their classes, and assign the majority class to the new point.</p>
+                        <p class="mb-4">The K-NN algorithm is based on distance calculation to measure how close a point is to another (like a new point, P-new).</p>
+                        <p class="mb-4">Once all distances are calculated, the algorithm performs a vote. We choose a value for k (the number of neighbors), select the k closest points, retrieve their classes, and assign the majority class to the new point.</p>
 
-                        <h3 class="text-2xl font-bold mb-4 text-white">Dataset Overview: The Iris Dataset</h3>
-                        <p class="mb-4">The dataset used in this project is the famous Iris dataset. It contains information about 150 flowers, divided into 3 species: Iris-setosa, Iris-versicolor, and Iris-virginica. Each flower has 4 features: sepal length, sepal width, petal length, and petal width.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Dataset Overview: Iris</h3>
+                        <p class="mb-4">The dataset used in this project is the famous Iris dataset. It contains information on 150 flowers, divided into 3 species: Iris-setosa, Iris-versicolor, and Iris-virginica. Each flower has 4 characteristics: sepal length, sepal width, petal length, and petal width.</p>
 
-                        <h3 class="text-2xl font-bold mb-4 text-white">Mathematics behind K-NN</h3>
-                        <p class="mb-4">There’s one formula we need to know, and that’s how to calculate distance. Here are the 3 main methods:</p>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Mathematics Behind K-NN</h3>
+                        <p class="mb-4">There is one essential formula to know: the distance calculation. Here are the 3 main methods:</p>
 
                         <h4 class="text-xl font-bold mb-2 text-primary">1. Euclidean Distance</h4>
                         <img src="assets/img/knn/euclidean.svg" alt="Euclidean Distance Formula" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
@@ -825,11 +1081,11 @@ def get_stations():
 
                         <h4 class="text-xl font-bold mb-2 text-primary">3. Minkowski Distance</h4>
                         <img src="assets/img/knn/minkowski.svg" alt="Minkowski Distance Formula" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
-                        <p class="mb-4 text-sm text-slate-400">A generalization of the previous two.</p>
+                        <p class="mb-4 text-sm text-slate-400">Generalization of the previous two.</p>
 
-                        <h3 class="text-2xl font-bold mb-4 text-white">Implementing K-NN from Scratch</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Implementing K-NN "From Scratch"</h3>
                         
-                        <h4 class="text-xl font-bold mb-2 text-primary">1. Data Loading</h4>
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Loading Data</h4>
                         <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
 <pre><code class="language-python"># Load dataset
 dataframe = pd.read_csv("data/iris.csv")
@@ -846,7 +1102,7 @@ iris_class = {'Iris-setosa':0, 'Iris-versicolor':0, 'Iris-virginica':0 }</code><
     return math.sqrt(dist)</code></pre>
                         </div>
 
-                        <h4 class="text-xl font-bold mb-2 text-primary">3. Sorting and Voting</h4>
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Calculating Distances and Voting</h4>
                         <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
 <pre><code class="language-python"># Sort and select k neighbors
 sorted_items = sorted(distance.items(), key=lambda item: item[1])
@@ -859,12 +1115,12 @@ print("Class of Pnew :", max(iris_class, key=iris_class.get))</code></pre>
                         </div>
 
                         <h3 class="text-2xl font-bold mb-4 text-white">How to Choose the Best k Value</h3>
-                        <p class="mb-4">Choosing the right value for k is very important. If k is too small, the model can be too sensitive to noise (overfitting). If k is too large, it may smooth out important patterns (underfitting).</p>
-                        <p class="mb-4">The best way to choose k is to test different values and observe the error on the test set. As shown in the graph below, the optimal k is where the test error is the lowest:</p>
+                        <p class="mb-4">Choosing the right value for k is very important. If k is too small, the model can be too sensitive to noise (overfitting). If k is too large, it can smooth out important patterns (underfitting).</p>
+                        <p class="mb-4">The best way to choose k is to test different values and observe the error on the test set. As shown in the graph below, the optimal k is where the test error is lowest (elbow method):</p>
                         <img src="assets/img/knn/best_k.svg" alt="Best K Graph" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
 
                         <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
-                        <p class="mb-4">K-NN is a great starting point in machine learning because it’s easy to understand and doesn’t require complex math or training. But it’s also powerful when used properly.</p>
+                        <p class="mb-4">K-NN is an excellent starting point in Machine Learning because it is easy to understand and does not require complex mathematics or heavy training.</p>
                         
                         <div class="flex gap-4 mt-8">
                             <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
@@ -877,10 +1133,222 @@ print("Class of Pnew :", max(iris_class, key=iris_class.get))</code></pre>
                 },
                 {
                     id: "decision-tree",
-                    title: "Decision Tree from Scratch",
-                    desc: "Building a decision tree without Scikit-Learn on the Titanic dataset.",
-                    fullDesc: "This project is a deep dive into decision tree algorithms. I built a complete classifier in pure Python to predict the survival of Titanic passengers. <br><br> <strong>Technical Details:</strong> <br> - <strong>Entropy & Information Gain:</strong> I coded the mathematical formulas for Shannon entropy to evaluate node purity and maximize information gain at each split. <br> - <strong>Recursion:</strong> The tree is built recursively, splitting data until a maximum depth or sufficient purity is reached. <br> - <strong>Data Handling:</strong> Processing categorical and numerical variables without Pandas/Scikit-Learn abstractions. <br><br> This project demonstrates mastery of data structures and the mathematics underlying Machine Learning.",
-                    tags: ["Python", "Machine Learning", "Titanic"],
+                    title: "Decision Tree (From Scratch)",
+                    desc: "Implementation of a decision tree without Scikit-Learn on the Titanic dataset.",
+                    fullDesc: `
+                        <h3 class="text-2xl font-bold mb-4 text-white">Introduction</h3>
+                        <p class="mb-4">We will explore how a decision tree works without using magic libraries like scikit-learn. This is a "from scratch" approach, designed to help you truly understand how the model works internally.</p>
+                        <p class="mb-4">It's surprisingly simple: in this article, I use object-oriented programming in Python to build a decision tree classifier step by step.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">What is a Decision Tree?</h3>
+                        <p class="mb-4">A decision tree is one of the simplest yet most powerful machine learning algorithms to understand.</p>
+                        <p class="mb-4">Basically, it works like a series of questions. Each internal node asks a yes/no question about a feature (e.g., "Is the passenger male?"), and depending on the answer, the data goes left or right.</p>
+                        <p class="mb-4">This continues until the data reaches a leaf, where a final prediction is made like "Survived" or "Did not survive".</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Core Idea and Intuition</h4>
+                        <p class="mb-4">The tree is built by splitting the dataset multiple times into subgroups that are increasingly "pure" (groups where most passengers share the same outcome).</p>
+                        <p class="mb-4">At each step, the algorithm chooses the best question to reduce uncertainty, based on a metric like Gini impurity or entropy.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Goal of this Project</h3>
+                        <p class="mb-4">In this project, we don't just want to use a decision tree — we want to build it from scratch, line by line.</p>
+                        <p class="mb-4">The goal is simple: understand what really happens under the hood.</p>
+                        <p class="mb-4">We will train our decision tree on the Titanic dataset, one of the most famous in data science. It is a binary classification: survived (1) or not (0), based on features like sex, age, and class.</p>
+                        <p class="mb-4">But instead of using a pre-built Scikit-Learn model, we will:</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li>Implement everything ourselves in pure Python</li>
+                            <li>Use an Object-Oriented (OOP) approach with classes like <code>DecisionTree</code> and <code>Node</code></li>
+                            <li>Avoid any machine learning library to stay close to the logic</li>
+                            <li>Understand every decision: how splits are made, how purity is calculated, how predictions are made</li>
+                        </ul>
+                        <p class="mb-4">This project does not aim for the highest accuracy. It is about gaining true intuition by building the tool yourself.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Code Structure</h3>
+                        <p class="mb-4">To keep things clean and modular, the project is structured using two main classes:</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">1. Node.py</h4>
+                        <p class="mb-4">This class represents each node of the tree — whether it is a decision node (with a split condition) or a leaf (with a prediction).</p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li><code>feature_index</code>: which feature is used to split</li>
+                            <li><code>threshold</code>: comparison value</li>
+                            <li><code>left / right</code>: child nodes</li>
+                            <li><code>is_leaf</code>: True if it is a leaf</li>
+                            <li><code>prediction</code>: predicted value if it is a leaf</li>
+                            <li><code>samples_count</code>: number of samples reaching this node</li>
+                        </ul>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">2. DecisionTree.py</h4>
+                        <p class="mb-4">This is the main class that will:</p>
+                        <ul class="list-disc list-inside mb-4 space-y-2 text-slate-300">
+                            <li>Train the tree (<code>fit</code>)</li>
+                            <li>Build it recursively (<code>build_tree</code>)</li>
+                            <li>Find the best split (<code>best_split</code>)</li>
+                            <li>Make predictions (<code>predict</code> and <code>predict_sample</code>)</li>
+                            <li>Use Gini or entropy as splitting criterion</li>
+                        </ul>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">3. Main.py</h4>
+                        <p class="mb-4">This is the script that ties everything together. It handles data loading, model building, and performance evaluation.</p>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">The Titanic Dataset</h3>
+                        <p class="mb-4">To test our tree, we use one of the most famous datasets: the Titanic.</p>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-left text-slate-300 border-collapse">
+                                <thead>
+                                    <tr class="border-b border-slate-700">
+                                        <th class="py-2 px-4">Feature</th>
+                                        <th class="py-2 px-4">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Pclass</td><td class="py-2 px-4">Passenger Class (1st, 2nd, 3rd)</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Sex</td><td class="py-2 px-4">Gender (male or female)</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Age</td><td class="py-2 px-4">Age in years</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">SibSp</td><td class="py-2 px-4">Number of siblings/spouses aboard</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Parch</td><td class="py-2 px-4">Number of parents/children aboard</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Fare</td><td class="py-2 px-4">Ticket price</td></tr>
+                                    <tr class="border-b border-slate-800"><td class="py-2 px-4">Embarked</td><td class="py-2 px-4">Port of Embarkation (C, Q, S)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Building the Tree Step by Step</h3>
+                        <p class="mb-4">Now, let's dive under the hood and explore the logic behind a decision tree — not just conceptually, but mathematically and in code.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Gini Impurity</h4>
+                        <p class="mb-4">Goal: measure how "pure" a set of examples is. If a node contains only survivors or only non-survivors, it is perfectly pure. Otherwise, impurity increases.</p>
+                        <img src="assets/img/decision_tree/gini_formula.svg" alt="Gini Impurity Formula" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <p class="mb-4 text-sm text-slate-400">Where Pi is the proportion of samples of class i in dataset D, and C is the number of classes.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def gini_impurity(y):
+    counts = Counter(y)
+    impurity = 1.0
+    for label in counts:
+        prob_of_lbl = counts[label] / len(y)
+        impurity -= prob_of_lbl ** 2
+    return impurity</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Best Split</h4>
+                        <p class="mb-4">This is the most important step. For each feature, we try every possible threshold, split the data, and calculate the weighted Gini impurity. The goal is to minimize impurity after the split.</p>
+                        <img src="assets/img/decision_tree/weighted_gini.svg" alt="Weighted Gini Formula" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def best_split(X, y):
+    best_gain = float('inf')
+    best_feature, best_threshold = None, None
+
+    for feature in range(X.shape[1]):
+        thresholds = np.unique(X[:, feature])
+        for t in thresholds:
+            left_idx = X[:, feature] <= t
+            right_idx = X[:, feature] > t
+
+            if len(y[left_idx]) == 0 or len(y[right_idx]) == 0:
+                continue
+
+            gini_left = gini_impurity(y[left_idx])
+            gini_right = gini_impurity(y[right_idx])
+            gini_split = (len(y[left_idx]) * gini_left + len(y[right_idx]) * gini_right) / len(y)
+
+            if gini_split < best_gain:
+                best_gain = gini_split
+                best_feature = feature
+                best_threshold = t
+
+    return best_feature, best_threshold</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Recursive Tree Construction</h3>
+                        <p class="mb-4">Once the best split is found, we split the data and repeat the process on the two subsets (left and right). This is handled by the <code>build_tree()</code> method.</p>
+                        <p class="mb-4">Recursion stops when:</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2 text-slate-300">
+                            <li>All samples belong to the same class (pure)</li>
+                            <li>Or no more useful splits can be made</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Prediction Logic</h3>
+                        <p class="mb-4">To predict, we follow the tree: at each internal node, check the feature value, go left or right depending on the threshold, until reaching a leaf.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python">def predict_sample(self, x):
+    node = self.root
+    while not node.is_leaf:
+        if x[node.feature_index] <= node.threshold:
+            node = node.left
+        else:
+            node = node.right
+    return node.prediction</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Training on Titanic Data</h3>
+                        <p class="mb-4">Now that we have built our tree, it's time to train it on a real dataset.</p>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Data Preparation</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Step 1: Load and prepare the dataset
+def load_titanic_data(file_path):
+    # ... (code to load CSV) ...
+    # Use selected features: Pclass, Sex, Age
+    pclass = int(row['Pclass'])
+    sex = 0 if row['Sex'] == 'male' else 1  # Encode: male = 0, female = 1
+    age = float(row['Age']) if row['Age'] else None
+    # ...
+    return X, y</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Training the Model</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Initialize and train the decision tree
+tree = DecisionTree(max_depth=3, min_samples_split=2, criterion="gini")
+tree.fit(X, y)</code></pre>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-2 text-primary">Accuracy Evaluation</h4>
+                        <div class="bg-slate-950 p-4 rounded-lg mb-6 border border-white/10 font-mono text-sm overflow-x-auto">
+<pre><code class="language-python"># Step 3: Predict on training data
+predictions = tree.predict(X)
+
+# Step 4: Compare predictions to actual results
+correct = sum(1 for i in range(len(y)) if y[i] == predictions[i])
+accuracy = correct / len(y)
+print(f"\nAccuracy on training data: {accuracy:.2f}")</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Tree Visualization</h3>
+                        <p class="mb-4">Finally, I displayed and visualized the decision tree structure.</p>
+                        <img src="assets/img/decision_tree/tree_viz.svg" alt="Decision Tree Visualization" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Strengths and Limitations</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-primary">Strengths</h4>
+                                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                                    <li><strong>Easy to Understand:</strong> Reflects human decision-making.</li>
+                                    <li><strong>No Scaling Needed:</strong> Splits on thresholds, not distances.</li>
+                                    <li><strong>Mixed Data:</strong> Handles numerical and categorical well.</li>
+                                    <li><strong>Efficient on Small Datasets:</strong> Good for quick insights.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-primary">Limitations</h4>
+                                <ul class="list-disc list-inside space-y-2 text-slate-300">
+                                    <li><strong>Overfitting:</strong> Can memorize data without pruning.</li>
+                                    <li><strong>Unstable:</strong> Sensitive to small data changes.</li>
+                                    <li><strong>Biased towards Dominant Attributes:</strong> Favors features with many levels.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
+                        <p class="mb-4">In this article, we didn't just use a decision tree — we built one from scratch. No shortcuts, no magic scikit-learn functions.</p>
+                        <p class="mb-4">By doing everything manually, we understood how the model really works. This knowledge is essential for any ML engineer before moving to high-level frameworks.</p>
+                        <p class="mb-4">When you build something from scratch, you stop being a "tool user" and become a solution creator.</p>
+
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                Full Code on my GitHub
+                            </a>
+                        </div>
+                    `,
+                    tags: ["Python", "ML from Scratch", "OOP", "Titanic"],
                     img: "project-dt.png"
                 },
                 {
@@ -976,6 +1444,15 @@ for j in range(epochs):
         w0 = weight_update(learning_rate, w0, grad(error, 1))
         w1 = weight_update(learning_rate, w1, grad(error, x1))
         # ... repeat for all weights ...</code></pre>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-white">Conclusion</h3>
+                        <p class="mb-4">By implementing logistic regression from scratch, we gained a deep understanding of the underlying mathematics — particularly how the model learns via gradient descent and minimizes loss. This foundation is crucial before mastering libraries like Scikit-Learn.</p>
+                        
+                        <div class="flex gap-4 mt-8">
+                            <a href="https://github.com/AmmarSo/Diabet-detection-using-Logistic-Regression" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                                View Full Code on GitHub
+                            </a>
                         </div>
                     `,
                     tags: ["Machine Learning", "Python", "Maths"],
@@ -1116,14 +1593,11 @@ let currentLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
 
 // DOM Elements
 const langToggleBtn = document.getElementById('lang-toggle');
-
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
-
-
     // Check if we are on the project detail page
     if (window.location.pathname.includes('project.html')) {
         loadProjectDetail();
@@ -1143,13 +1617,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
     }
 
-
     updateFlag();
 });
-
-
-
-
 
 function updateContent() {
     const translations = translationsData[currentLang];
@@ -1200,7 +1669,7 @@ function loadProjectDetail() {
 
     if (project) {
         container.innerHTML = `
-                        <div class="fade-in-up">
+            <div class="fade-in-up">
                 <div class="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-2xl">
                     <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-60 z-10"></div>
                     <img src="assets/img/${project.img}" alt="${project.title}" class="w-full h-full object-cover">
@@ -1228,7 +1697,7 @@ function loadProjectDetail() {
                     </div>
                 </div>
             </div>
-    `;
+        `;
     } else {
         container.innerHTML = `<p class="text-center text-xl text-red-500">Projet non trouvé.</p>`;
     }
@@ -1247,7 +1716,7 @@ function updateList(containerId, items, createItemFn) {
 
 function createEducationItem(item, index) {
     return `
-    <div class="relative pl-8 border-l-2 border-primary/30 fade-in-up" style="animation-delay: ${index * 0.1}s">
+        <div class="relative pl-8 border-l-2 border-primary/30 fade-in-up" style="animation-delay: ${index * 0.1}s">
             <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary shadow-[0_0_10px_rgba(14,165,233,0.5)]"></div>
             <div class="mb-1 text-sm text-primary font-mono">${item.date}</div>
             <h3 class="text-xl font-bold">${item.degree}</h3>
@@ -1259,27 +1728,27 @@ function createEducationItem(item, index) {
 
 function createExperienceItem(item, index) {
     return `
-    <div class="relative mb-12 timeline-item fade-in-up">
-        <div class="md:flex items-center justify-between w-full ${index % 2 === 1 ? 'flex-row-reverse' : ''}">
-            <div class="md:w-5/12 mb-4 md:mb-0 ${index % 2 === 1 ? 'pl-8' : 'md:text-right pr-8'}">
-                <h3 class="text-xl font-bold">${item.role}</h3>
-                <div class="text-primary font-medium">${item.company}</div>
-                <div class="text-sm text-slate-500 mt-1 font-mono">${item.date}</div>
-            </div>
-            <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(14,165,233,0.8)] transform -translate-x-1/2 z-10 mt-1.5"></div>
-            <div class="md:w-5/12 ${index % 2 === 1 ? 'md:text-right pr-8' : 'pl-8'}">
-                <div class="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors">
-                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">${item.desc}</p>
+        <div class="relative mb-12 timeline-item fade-in-up">
+            <div class="md:flex items-center justify-between w-full ${index % 2 === 1 ? 'flex-row-reverse' : ''}">
+                <div class="md:w-5/12 mb-4 md:mb-0 ${index % 2 === 1 ? 'pl-8' : 'md:text-right pr-8'}">
+                    <h3 class="text-xl font-bold">${item.role}</h3>
+                    <div class="text-primary font-medium">${item.company}</div>
+                    <div class="text-sm text-slate-500 mt-1 font-mono">${item.date}</div>
+                </div>
+                <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(14,165,233,0.8)] transform -translate-x-1/2 z-10 mt-1.5"></div>
+                <div class="md:w-5/12 ${index % 2 === 1 ? 'md:text-right pr-8' : 'pl-8'}">
+                    <div class="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors">
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">${item.desc}</p>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     `;
 }
 
 function createProjectItem(item, index) {
     return `
-    <a href="project.html?id=${item.id}" class="glass-card rounded-xl overflow-hidden group fade-in-up block hover:scale-[1.02] transition-transform duration-300">
+        <a href="project.html?id=${item.id}" class="glass-card rounded-xl overflow-hidden group fade-in-up block hover:scale-[1.02] transition-transform duration-300">
             <div class="h-48 bg-slate-900 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-80 z-10"></div>
                 <img src="assets/img/${item.img}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
@@ -1299,7 +1768,7 @@ function createProjectItem(item, index) {
 
 function createSkillItem(category, index) {
     return `
-    <div class="glass-card p-6 rounded-xl fade-in-up">
+        <div class="glass-card p-6 rounded-xl fade-in-up">
             <h3 class="text-lg font-bold mb-4 border-b border-white/10 pb-2">${category.name}</h3>
             <div class="flex flex-wrap gap-2">
                 ${category.items.split(', ').map(skill => `
