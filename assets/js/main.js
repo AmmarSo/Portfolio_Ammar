@@ -18,6 +18,7 @@ const translationsData = {
             role: "Ingénieur Big Data & IA",
             tagline: "Passionné par l'IA et la data, je conçois des systèmes intelligents pour la santé et l'industrie.",
             cta_cv: "Télécharger mon CV",
+            cta_link_cv: "CV_Ammar_SOUCHON_EPISEN_20251007-1.pdf",
             cta_contact: "Me contacter"
         },
         about: {
@@ -41,7 +42,7 @@ const translationsData = {
                 },
                 {
                     degree: "BUT Informatique",
-                    school: "IUT de Créteil-Vitry (UPEC)",
+                    school: "IUT de Créteil-Vitry (UPEC) - Vitry-sur-Seine",
                     date: "Sept 2022 - Août 2025",
                     desc: "Parcours Administration, gestion et exploitation des données."
                 }
@@ -519,11 +520,6 @@ correct = sum(1 for i in range(len(y)) if y[i] == predictions[i])
 accuracy = correct / len(y)
 print(f"\nAccuracy on training data: {accuracy:.2f}")</code></pre>
                         </div>
-
-                        <h3 class="text-2xl font-bold mb-4 text-white">Visualisation de l'Arbre</h3>
-                        <p class="mb-4">Enfin, j'ai affiché et visualisé la structure de l'arbre de décision.</p>
-                        <img src="assets/img/decision_tree/tree_viz.svg" alt="Visualisation Arbre de Décision" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
-
                         <h3 class="text-2xl font-bold mb-4 text-white">Forces et Limites</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
@@ -777,15 +773,15 @@ def get_stations():
             categories: [
                 {
                     name: "Langages & Dév",
-                    items: "Python, Dart, SQL, PL/SQL"
+                    items: "Python, Dart/Flutter, SQL, PL/SQL"
                 },
                 {
                     name: "Data & IA",
-                    items: "Pandas, NumPy, Scikit-Learn, TensorFlow, OpenCV, Mistral 8B (Fine-tuning)"
+                    items: "Pandas, NumPy, Scikit-Learn, OpenCV, K-NN, Naïves Bayes, LDA, Decision Tree, Random Forest, Base de données orientée document, Base de données orientée graph, Base de données vectorielle"
                 },
                 {
                     name: "Outils & Web",
-                    items: "Flask, Flutter, Power BI, Git, GitHub"
+                    items: "Flask, Power BI, Git, GitHub, Agile, Scrum, Kanban"
                 }
             ]
         },
@@ -809,7 +805,7 @@ def get_stations():
             name: "Ammar Souchon",
             role: "Big Data & AI Engineer",
             tagline: "Passionate about AI and data, I design intelligent systems for healthcare and industry.",
-            cta_cv: "Download CV",
+            cta_cv: "Download my resume",
             cta_contact: "Contact Me"
         },
         about: {
@@ -827,13 +823,13 @@ def get_stations():
             items: [
                 {
                     degree: "Engineer in Health Technologies",
-                    school: "EPISEN (UPEC) - Vitry-sur-Seine",
+                    school: "EPISEN (UPEC) - Paris",
                     date: "Sept 2025 - Present",
                     desc: "Specialization in Big Data, AI, Network, and Development."
                 },
                 {
-                    degree: "BUT Computer Science",
-                    school: "IUT de Créteil-Vitry (UPEC)",
+                    degree: "Bachelor of Computer Science",
+                    school: "IUT de Créteil-Vitry (UPEC) - Paris",
                     date: "Sept 2022 - Aug 2025",
                     desc: "Track: Data Administration, Management, and Exploitation."
                 }
@@ -1311,11 +1307,6 @@ correct = sum(1 for i in range(len(y)) if y[i] == predictions[i])
 accuracy = correct / len(y)
 print(f"\nAccuracy on training data: {accuracy:.2f}")</code></pre>
                         </div>
-
-                        <h3 class="text-2xl font-bold mb-4 text-white">Tree Visualization</h3>
-                        <p class="mb-4">Finally, I displayed and visualized the decision tree structure.</p>
-                        <img src="assets/img/decision_tree/tree_viz.svg" alt="Decision Tree Visualization" class="max-w-full h-auto rounded-lg my-4 border border-white/10 bg-white/5 p-2">
-
                         <h3 class="text-2xl font-bold mb-4 text-white">Strengths and Limitations</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
@@ -1569,15 +1560,15 @@ def get_stations():
             categories: [
                 {
                     name: "Languages & Dev",
-                    items: "Python, Dart, SQL, PL/SQL"
+                    items: "Python, Dart/Flutter, SQL, PL/SQL"
                 },
                 {
                     name: "Data & IA",
-                    items: "Pandas, NumPy, Scikit-Learn, TensorFlow, OpenCV, Mistral 8B (Fine-tuning)"
+                    items: "Pandas, NumPy, Scikit-Learn, OpenCV, K-NN, Naïves Bayes, LDA, Decision Tree, Random Forest, Oriented document database, Graph database, Vector database"
                 },
                 {
                     name: "Tools & Web",
-                    items: "Flask, Flutter, Power BI, Git, GitHub"
+                    items: "Flask, Power BI, Git, GitHub, Agile, Scrum, Kanban"
                 }
             ]
         },
