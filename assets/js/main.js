@@ -18,7 +18,7 @@ const translationsData = {
             role: "Ingénieur Big Data & IA",
             tagline: "Passionné par l'IA et la data, je conçois des systèmes intelligents pour la santé et l'industrie.",
             cta_cv: "Télécharger mon CV",
-            cta_link_cv: "CV_Ammar_SOUCHON_EPISEN_20251007-1.pdf",
+            cta_link_cv: "CV_Ammar_Souchon-FR.pdf",
             cta_contact: "Me contacter"
         },
         about: {
@@ -806,6 +806,7 @@ def get_stations():
             role: "Big Data & AI Engineer",
             tagline: "Passionate about AI and data, I design intelligent systems for healthcare and industry.",
             cta_cv: "Download my resume",
+            cta_link_cv: "CV_Ammar_Souchon-EN.pdf",
             cta_contact: "Contact Me"
         },
         about: {
@@ -1639,6 +1640,12 @@ function updateContent() {
             }
         }
     });
+
+    // Update CV Link HREF
+    const cvLink = document.querySelector('span[data-i18n="hero.cta_cv"]')?.closest('a');
+    if (cvLink && translations.hero.cta_link_cv) {
+        cvLink.href = translations.hero.cta_link_cv;
+    }
 
     // Update Lists
     updateList('education-list', translations.education.items, createEducationItem);
