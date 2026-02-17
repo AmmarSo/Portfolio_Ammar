@@ -6,7 +6,7 @@ Ce projet est un portfolio personnel moderne, statique et bilingue (FR/EN), con�
 
 1.  **Cloner le projet** (ou télécharger le dossier) :
     ```bash
-    git clone https://github.com/votre-username/portfolio.git
+    git clone https://github.com/ammarso/portfolio.git
     cd portfolio
     ```
 
