@@ -251,9 +251,12 @@ const translationsData = {
                         <h3 class="text-2xl font-bold mb-4 text-white">Résultats</h3>
                         <p class="mb-4">Après entraînement sur le dataset MNIST, ce modèle simple atteint une précision d'environ <strong>85-90%</strong> sur les données de test.</p>
                         <p class="mb-4">Ce projet prouve qu'il n'est pas nécessaire d'avoir une "boîte noire" pour faire de l'IA. Comprendre les mathématiques sous-jacentes donne une maîtrise totale sur le modèle.</p>
-
+                        
+                        <a href="https://medium.com/@ammar.souchon/neural-network-from-scratch-for-handwritten-digit-recognition-mnist-63724376dfe1" target="_blank" class="px-6 py-3 rounded-lg bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors shadow-lg">
+                            Lire sur Medium
+                        </a>
                         <div class="flex gap-4 mt-8">
-                            <a href="https://github.com/AmmarSo" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
+                            <a href="https://github.com/AmmarSo/HandwrittenNeuralNetworkFromScratch" target="_blank" class="text-primary hover:text-white transition-colors border-b border-primary/50 hover:border-white">
                                 Voir le Code Complet sur GitHub
                             </a>
                         </div>
