@@ -812,7 +812,7 @@ def get_stations():
             categories: [
                 {
                     name: "Langages & Dév",
-                    items: "Python, Dart/Flutter, SQL, PL/SQL"
+                    items: "Python, Matlab, Dart/Flutter, SQL, PL/SQL"
                 },
                 {
                     name: "Data & IA",
@@ -1639,7 +1639,7 @@ def get_stations():
             categories: [
                 {
                     name: "Languages & Dev",
-                    items: "Python, Dart/Flutter, SQL, PL/SQL"
+                    items: "Python, Matlab, Dart/Flutter, SQL, PL/SQL"
                 },
                 {
                     name: "Data & IA",
