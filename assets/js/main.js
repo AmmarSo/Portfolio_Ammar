@@ -15,7 +15,7 @@ const translationsData = {
         hero: {
             greeting: "Bonjour, je suis",
             name: "Ammar Souchon",
-            role: "Futur Ingénieur Big Data & IA",
+            role: "Apprenti Ingénieur Big Data & IA",
             tagline: "Passionné par l'IA et la data, je conçois des systèmes intelligents pour la santé et l'industrie.",
             cta_cv: "Télécharger mon CV",
             cta_link_cv: "CV_Ammar_Souchon-FR.pdf",
